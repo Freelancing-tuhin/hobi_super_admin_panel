@@ -2,7 +2,7 @@ import CardBox from '../../shared/CardBox';
 import { Icon } from '@iconify/react';
 import Background from '/src/assets/images/backgrounds/welcome-bg.png';
 
-const WelcomeBox = () => {
+const WelcomeBox = ({ basicData }: any) => {
   return (
     <>
       <CardBox className="bg-primary dark:bg-primary pb-0">
@@ -17,12 +17,12 @@ const WelcomeBox = () => {
 
             <div className="flex  w-full xl:mt-12 sm:mt-12 lg:mt-6 mt-6">
               <div className="border-e border-white/20 pe-4">
-                <p className="text-white opacity-75 text-sm mb-1">Budget</p>
-                <h2 className="text-white text-2xl">$98,450</h2>
+                <p className="text-white opacity-75 text-sm mb-1">Total Events</p>
+                <h2 className="text-white text-2xl">{basicData?.totalEvents}</h2>
               </div>
               <div className="ps-4">
-                <p className="text-white opacity-75 text-sm mb-1">Budget</p>
-                <h2 className="text-white text-2xl">$2,440</h2>
+                <p className="text-white opacity-75 text-sm mb-1">Total Income</p>
+                <h2 className="text-white text-2xl">₹{basicData?.totalIncome}</h2>
               </div>
             </div>
           </div>

@@ -218,6 +218,7 @@ const Router = [
       { path: '/Event/:id', exact: true, element: <Dashboard3 /> },
       { path: '/Event/list', exact: true, element: <EcomProductList /> },
       { path: '/Event/add', exact: true, element: <EcommerceAddProduct /> },
+      { path: '/reports', exact: true, element: <InvoiceList /> },
       // Apps
       { path: '/apps/contacts', element: <Contact /> },
       { path: '/apps/ecommerce/shop', element: <Ecommerce /> },

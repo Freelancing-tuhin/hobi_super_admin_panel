@@ -54,7 +54,7 @@ const SidebarContent: MenuItem[] = [
         name: 'Reports and Help',
         icon: 'solar:call-chat-line-duotone',
         id: uniqueId(),
-        url: '/dashboards/dashboard3',
+        url: '/reports',
       },
       // {
       //   name: 'Front Pages',
