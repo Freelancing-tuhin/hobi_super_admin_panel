@@ -1,18 +1,12 @@
 import { useState } from 'react';
 import CardBox from '../../shared/CardBox';
 import { Table, Button } from 'flowbite-react';
-import { Icon } from '@iconify/react';
-import React from 'react';
 import SimpleBar from 'simplebar-react';
 import { formatDateTime } from 'src/service/formatDate';
 
 const Reviews = ({ usersList }: any) => {
-  const [activeGender, setActiveGender] = useState('All');
+  const [activeGender] = useState('All');
   const [activeRating, setActiveRating] = useState<number | null>(null);
-
-  const handleGenderClick = (tab: string) => {
-    setActiveGender(tab);
-  };
 
   const handleRatingClick = (rating: number | null) => {
     setActiveRating(rating);

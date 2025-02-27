@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Checkbox, Table, TextInput, Button, Modal, Badge, Tooltip } from 'flowbite-react';
+import { Checkbox, Table, Button, Modal, Badge, Tooltip } from 'flowbite-react';
 
 import { Icon } from '@iconify/react';
 
@@ -8,8 +8,8 @@ import { InvoiceContext } from 'src/context/InvoiceContext';
 
 function InvoiceList() {
   const { invoices, deleteInvoice } = useContext(InvoiceContext);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [activeTab, setActiveTab] = useState('All');
+  const [searchTerm] = useState('');
+  const [activeTab] = useState('All');
   const [selectedProducts, setSelectedProducts] = useState<any>([]);
   const [selectAll, setSelectAll] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
@@ -25,15 +25,6 @@ function InvoiceList() {
     },
   );
 
-  const handleTabClick = (tabName: string) => {
-    setActiveTab(tabName);
-  };
-
-  // Calculate the counts for different statuses
-  const Shipped = invoices.filter((t: { status: string }) => t.status === 'Shipped').length;
-  const Delivered = invoices.filter((t: { status: string }) => t.status === 'Delivered').length;
-  const Pending = invoices.filter((t: { status: string }) => t.status === 'Pending').length;
-
   // Toggle all checkboxes
   const toggleSelectAll = () => {
     const selectAllValue = !selectAll;
@@ -42,16 +33,6 @@ function InvoiceList() {
       setSelectedProducts(invoices.map((invoice: { id: any }) => invoice.id));
     } else {
       setSelectedProducts([]);
-    }
-  };
-
-  // Toggle individual product selection
-  const toggleSelectProduct = (productId: any) => {
-    const index = selectedProducts.indexOf(productId);
-    if (index === -1) {
-      setSelectedProducts([...selectedProducts, productId]);
-    } else {
-      setSelectedProducts(selectedProducts.filter((id: any) => id !== productId));
     }
   };
 

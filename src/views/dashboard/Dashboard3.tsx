@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import CustomerChart from 'src/components/dashboards/Dashboard1/CustomerChart';
 import RevenueByProduct from 'src/components/dashboards/Dashboard1/RevenueByProduct';
 import Reviews from 'src/components/dashboards/Dashboard1/Reviews';
 import SalesOverview from 'src/components/dashboards/Dashboard1/SalesOverview';
