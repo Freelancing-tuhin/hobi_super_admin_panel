@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Label, Radio, TextInput } from 'flowbite-react';
 import CardBox from 'src/components/shared/CardBox';
-import React from 'react';
 
 const Pricing = ({ eventData, setEventData }: any) => {
   const handleRadioChange = (event: { target: { value: string } }) => {

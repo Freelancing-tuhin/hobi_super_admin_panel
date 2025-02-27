@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Label, Select } from 'flowbite-react';
 import CardBox from 'src/components/shared/CardBox';
 

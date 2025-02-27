@@ -2,7 +2,7 @@ import { Modal, Button, TextInput, Label, Checkbox } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { editEvent } from 'src/service/editEvent';
 
-const EditEventModal = ({ open, onClose, eventData, onSave, getEvents }: any) => {
+const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
   const [editedEvent, setEditedEvent] = useState(eventData);
   const [step, setStep] = useState(1);
 
@@ -16,7 +16,7 @@ const EditEventModal = ({ open, onClose, eventData, onSave, getEvents }: any) =>
     try {
       const updatedData = editedEvent;
       const eventId = eventData?._id;
-      const result = await editEvent(eventId, updatedData);
+      await editEvent(eventId, updatedData);
       getEvents();
       onClose();
     } catch (error) {}

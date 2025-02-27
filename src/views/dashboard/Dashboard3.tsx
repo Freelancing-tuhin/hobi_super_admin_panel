@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import CalendarApp from 'src/components/apps/calendar';
 import CustomerChart from 'src/components/dashboards/Dashboard1/CustomerChart';
 import RevenueByProduct from 'src/components/dashboards/Dashboard1/RevenueByProduct';
 import SalesOverview from 'src/components/dashboards/Dashboard1/SalesOverview';
-import TotalSettelment from 'src/components/dashboards/Dashboard1/TotalSettelment';
 import YourPerformance from 'src/components/dashboards/Dashboard1/YourPerformance';
-import AnnualProfit from 'src/components/dashboards/Dashboard2/AnnualProfit';
-import RevenueForcastChart from 'src/components/dashboards/Dashboard2/RevenueForcastChart';
 import ColorBoxes from 'src/components/dashboards/dashboard3/ColorBoxes';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import getBookingStatistics, {
@@ -20,8 +16,8 @@ const Dashboard3 = () => {
   const [stats, setStats] = useState<any>(null);
   const [usersList, setUsersList] = useState<any>(null);
   const [performance, setPerformence] = useState<any>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [, setLoading] = useState(false);
+  const [, setError] = useState<string | null>(null);
 
   const fetchStats = async () => {
     if (!id) return;

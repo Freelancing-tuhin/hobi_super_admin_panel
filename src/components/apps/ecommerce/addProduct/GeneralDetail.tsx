@@ -1,6 +1,5 @@
 import { Label, TextInput } from 'flowbite-react';
 import CardBox from 'src/components/shared/CardBox';
-import TiptapEdit from 'src/views/forms/from-tiptap/TiptapEdit';
 
 interface GeneralDetailProps {
   title: string;

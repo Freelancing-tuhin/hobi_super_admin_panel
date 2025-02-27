@@ -1,13 +1,7 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
-import { FileInput, Label } from 'flowbite-react';
+import { Label } from 'flowbite-react';
 import React from 'react';
 import CardBox from 'src/components/shared/CardBox';
-
-interface ThumbnailProps {
-  onBannerChange: (file: File) => void;
-  setBanner: (url: string) => void;
-  banner: string | null;
-}
 
 const Thumbnail = ({ onBannerChange, setBanner, banner }: any) => {
   const handleBannerChange = (event: React.ChangeEvent<HTMLInputElement>) => {

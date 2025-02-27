@@ -2,12 +2,6 @@ import mock from '../mock';
 import { sub } from 'date-fns';
 import { Chance } from 'chance';
 
-import s5 from '/src/assets/images/products/s5.jpg';
-import super_games from '/src/assets/images/products/Updated_Products/new-games.jpg';
-import psalms_book from '/src/assets/images/products/Updated_Products/new-book.jpg';
-import boat_headphone from '/src/assets/images/products/Updated_Products/boat-headphone.jpg';
-import macbook_air_pro from '/src/assets/images/products/Updated_Products/advance-macbook.jpg';
-import gaming_console from '/src/assets/images/products/Updated_Products/super-games.jpg';
 import red_dress from '/src/assets/images/products/Updated_Products/red-valvet-dress.jpg';
 import girls_shoes from '/src/assets/images/products/Updated_Products/shoes.jpg';
 import sweet_purse from '/src/assets/images/products/Updated_Products/short-sweet-purse.jpg';

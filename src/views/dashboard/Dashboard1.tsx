@@ -1,12 +1,7 @@
 import Customer from '../../components/dashboards/Dashboard1/Customer';
-import CustomerChart from '../../components/dashboards/Dashboard1/CustomerChart';
 import Project from '../../components/dashboards/Dashboard1/Project';
-import RevenueByProduct from '../../components/dashboards/Dashboard1/RevenueByProduct';
 import RevenueForcast from '../../components/dashboards/Dashboard1/RevenueForcast';
-import SalesOverview from '../../components/dashboards/Dashboard1/SalesOverview';
-import TotalSettelment from '../../components/dashboards/Dashboard1/TotalSettelment';
 import WelcomeBox from '../../components/dashboards/Dashboard1/WelcomeBox';
-import YourPerformance from '../../components/dashboards/Dashboard1/YourPerformance';
 
 const Dashboard1 = () => {
   return (

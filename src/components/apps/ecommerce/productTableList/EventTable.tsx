@@ -1,20 +1,14 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { format } from 'date-fns';
-import { Badge, Checkbox, Dropdown, Table } from 'flowbite-react';
-import React, { useEffect, useState } from 'react';
+import { Dropdown, Table } from 'flowbite-react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import SimpleBar from 'simplebar-react';
 import { getEvent } from 'src/service/getEvents';
 import EditEventModal from './EditEventModal';
 import { deleteEvent } from 'src/service/deleteEvent';
 
-const EventTable = ({
-  selectAll,
-  toggleSelectAll,
-  selectedProducts,
-  toggleSelectProduct,
-  HiOutlineDotsVertical,
-}: any) => {
+const EventTable = ({ HiOutlineDotsVertical }: any) => {
   const [events, setEvents] = useState([]);
   const [editedevents, setEditedevents] = useState();
   const [openEditModal, setOpenEditModal] = useState(false);

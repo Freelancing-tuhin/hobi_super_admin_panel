@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Label, Radio, TextInput, Card } from 'flowbite-react';
-import React from 'react';
 
 const ActivityDetails = ({ eventData, setEventData }: any) => {
   const handleRadioChange = (event: { target: { value: string } }) => {

@@ -1,48 +1,25 @@
-import {
-  Badge,
-  Table,
-  Dropdown,
-  Checkbox,
-  TextInput,
-  Button,
-  Modal,
-  Alert,
-  Label,
-  Select,
-  ModalFooter,
-} from 'flowbite-react';
+import { TextInput, Button, Alert } from 'flowbite-react';
 import { useContext, useState } from 'react';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { Icon } from '@iconify/react';
-import { format } from 'date-fns';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import SimpleBar from 'simplebar-react';
 import { ProductContext } from 'src/context/Ecommercecontext';
 import { ProductType } from 'src/types/apps/eCommerce';
 import CardBox from 'src/components/shared/CardBox';
 import React from 'react';
-import { Link } from 'react-router';
 import EventTable from './EventTable';
 
 const ProductTablelist = () => {
-  const {
-    filteredAndSortedProducts,
-    deleteProduct,
-    deleteAllProducts,
-    searchProducts,
-    updateProduct,
-    getProductById,
-  }: any = useContext(ProductContext);
+  const { filteredAndSortedProducts, searchProducts, getProductById }: any =
+    useContext(ProductContext);
   const [search, setSearch] = useState('');
   const [selectedProducts, setSelectedProducts] = useState<any>([]);
   const [selectAll, setSelectAll] = useState(false);
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
+  const [, setOpenDeleteDialog] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [openEditModal, setOpenEditModal] = useState(false);
-  const [editedProduct, setEditedProduct] = useState<ProductType | null>(null);
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [imageURL, setImageURL] = useState<string>('');
+  const [, setOpenEditModal] = useState(false);
+  const [, setEditedProduct] = useState<ProductType | null>(null);
+  const [, setImageURL] = useState<string>('');
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -56,24 +33,6 @@ const ProductTablelist = () => {
       setEditedProduct(product);
       setImageURL(product.photo);
       setOpenEditModal(true);
-    }
-  };
-
-  const handleCloseEditModals = () => {
-    setOpenEditModal(false);
-    setEditedProduct(null);
-    setImageURL('');
-  };
-
-  const handleSaveEdit = () => {
-    if (editedProduct) {
-      const updatedProduct = {
-        ...editedProduct,
-        photo: imageURL,
-        created: selectedDate || editedProduct.created,
-      };
-      updateProduct(editedProduct.id.toString(), updatedProduct);
-      handleCloseEditModals();
     }
   };
 
@@ -101,32 +60,6 @@ const ProductTablelist = () => {
       setShowAlert(true); // Show alert after adding contact
     } else {
       setOpenDeleteDialog(true);
-    }
-  };
-
-  const handleCloseDeleteDialog = () => {
-    setOpenDeleteDialog(false);
-  };
-
-  const handleConfirmDelete = () => {
-    if (selectedProducts.length > 0) {
-      if (selectedProducts.length === filteredAndSortedProducts.length) {
-        deleteAllProducts();
-      } else {
-        selectedProducts.forEach((productId: number) => {
-          deleteProduct(productId);
-        });
-      }
-      setSelectedProducts([]);
-      setSelectAll(false);
-    }
-    setOpenDeleteDialog(false);
-  };
-
-  const handleDateChange = (created: Date | null) => {
-    setSelectedDate(created);
-    if (editedProduct) {
-      setEditedProduct({ ...editedProduct, created: created || new Date() });
     }
   };
 
