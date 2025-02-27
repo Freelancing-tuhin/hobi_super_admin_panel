@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import CustomerChart from 'src/components/dashboards/Dashboard1/CustomerChart';
 import RevenueByProduct from 'src/components/dashboards/Dashboard1/RevenueByProduct';
+import Reviews from 'src/components/dashboards/Dashboard1/Reviews';
 import SalesOverview from 'src/components/dashboards/Dashboard1/SalesOverview';
 import YourPerformance from 'src/components/dashboards/Dashboard1/YourPerformance';
 import ColorBoxes from 'src/components/dashboards/dashboard3/ColorBoxes';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
+import { getEventReview } from 'src/service/eventReview';
 import getBookingStatistics, {
   getBookingPerformance,
   getBookingUsers,
@@ -14,8 +16,9 @@ import getBookingStatistics, {
 const Dashboard3 = () => {
   const { id } = useParams<{ id: string }>(); // Get eventId from URL
   const [stats, setStats] = useState<any>(null);
-  const [usersList, setUsersList] = useState<any>(null);
   const [performance, setPerformence] = useState<any>(null);
+  const [usersList, setUsersList] = useState<any>(null);
+  const [reviewList, setReviewList] = useState<any>(null);
   const [, setLoading] = useState(false);
   const [, setError] = useState<string | null>(null);
 
@@ -63,6 +66,25 @@ const Dashboard3 = () => {
     }
   };
 
+  const EventReviews = async () => {
+    if (!id) return;
+
+    setLoading(true);
+    try {
+      const response = await getEventReview(id);
+      console.log('=>reviews', response);
+      setReviewList(response);
+    } catch (err) {
+      setError('An unexpected error occurred.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    EventReviews();
+  }, [id]);
+
   useEffect(() => {
     fetchStats();
   }, [id]);
@@ -99,11 +121,11 @@ const Dashboard3 = () => {
         <div className="lg:col-span-4 col-span-12">
           <SalesOverview />
         </div>
-        <div className="lg:col-span-4 col-span-12">
-          <CustomerChart />
-        </div>
-        <div className="lg:col-span-8 col-span-12">
+        <div className="lg:col-span-5 col-span-12">
           <YourPerformance performence={performance} />
+        </div>
+        <div className="lg:col-span-7 col-span-12">
+          <Reviews usersList={reviewList} />
         </div>
 
         {/* <div className="lg:col-span-8 col-span-12">

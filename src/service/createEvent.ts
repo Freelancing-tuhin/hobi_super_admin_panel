@@ -47,7 +47,7 @@ export const createEvent = async (eventData: CreateEventPayload): Promise<void> 
     formData.append('organizerId', eventData.organizerId);
 
     const response = await axios.post(
-      'http://localhost:8989/api/v1/events/create-event',
+      'https://hobi-app-server.onrender.com/api/v1/events/create-event',
       formData,
       {
         headers: {

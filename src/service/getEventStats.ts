@@ -3,7 +3,7 @@ import axios from 'axios';
 const getBookingStatistics = async (eventId: string) => {
   try {
     const response = await axios.get(
-      `http://localhost:8989/api/v1/events/view-event-stats?eventId=${eventId}`,
+      `https://hobi-app-server.onrender.com/api/v1/events/view-event-stats?eventId=${eventId}`,
     );
     return response.data;
   } catch (error) {
@@ -17,7 +17,7 @@ export default getBookingStatistics;
 export const getBookingUsers = async (eventId: string) => {
   try {
     const response = await axios.get(
-      `http://localhost:8989/api/v1/events/view-event-users?eventId=${eventId}`,
+      `https://hobi-app-server.onrender.com/api/v1/events/view-event-users?eventId=${eventId}`,
     );
     return response.data;
   } catch (error) {
@@ -29,7 +29,7 @@ export const getBookingUsers = async (eventId: string) => {
 export const getBookingPerformance = async (eventId: string) => {
   try {
     const response = await axios.get(
-      `http://localhost:8989/api/v1/events/view-event-performance?eventId=${eventId}`,
+      `https://hobi-app-server.onrender.com/api/v1/events/view-event-performance?eventId=${eventId}`,
     );
     return response.data;
   } catch (error) {
