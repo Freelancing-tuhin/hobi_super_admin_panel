@@ -1,9 +1,8 @@
-
-import { Navbar, Dropdown, Avatar } from "flowbite-react";
-import CardBox from "src/components/shared/CardBox";
-import CodeModal from "../CodeModal";
-import FullLogo from "src/layouts/full/shared/logo/FullLogo";
-import user from "/src/assets/images/profile/user-2.jpg"
+import { Navbar, Dropdown, Avatar } from 'flowbite-react';
+import CardBox from 'src/components/shared/CardBox';
+import CodeModal from '../CodeModal';
+import FullLogo from 'src/layouts/full/shared/logo/FullLogo';
+import user from '/src/assets/images/profile/user-2.jpg';
 
 const NavWithDropdown = () => {
   return (
@@ -32,7 +31,7 @@ const NavWithDropdown = () => {
               <Dropdown.Header>
                 <span className="block text-sm">Bonnie Green</span>
                 <span className="block truncate text-sm font-medium">
-                  info@matdash.com
+                  info@matdash.comss
                 </span>
               </Dropdown.Header>
               <Dropdown.Item>Dashboard</Dropdown.Item>
@@ -63,19 +62,11 @@ const NavWithDropdown = () => {
             <Dropdown
               arrowIcon={false}
               inline
-              label={
-                <Avatar
-                  alt="User settings"
-                  img={user}
-                  rounded
-                />
-              }
+              label={<Avatar alt="User settings" img={user} rounded />}
             >
               <Dropdown.Header>
                 <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">
-                  info@matdash.com
-                </span>
+                <span className="block truncate text-sm font-medium">info@matdash.com</span>
               </Dropdown.Header>
               <Dropdown.Item>Dashboard</Dropdown.Item>
               <Dropdown.Item>Settings</Dropdown.Item>

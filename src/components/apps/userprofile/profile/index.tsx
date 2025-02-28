@@ -1,10 +1,6 @@
-
-import { UserDataProvider } from "src/context/UserDataContext";
-import Introduction from "./Introduction";
-import Photos from "./Photos";
-import Post from "./Post";
-import ProfileBanner from "./ProfileBanner";
-
+import { UserDataProvider } from 'src/context/UserDataContext';
+import Introduction from './Introduction';
+import ProfileBanner from './ProfileBanner';
 
 const UserProfileApp = () => {
   return (
@@ -22,14 +18,9 @@ const UserProfileApp = () => {
                 <Introduction />
               </div>
               {/* Photos */}
-              <div className="col-span-12">
-                <Photos />
-              </div>
             </div>
           </div>
-          <div className="lg:col-span-8 col-span-12">
-            <Post />
-          </div>
+          <div className="lg:col-span-8 col-span-12">{/* <Post /> */}</div>
         </div>
       </UserDataProvider>
     </>
