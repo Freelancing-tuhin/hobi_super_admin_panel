@@ -11,6 +11,7 @@ import getBookingStatistics, {
   getBookingPerformance,
   getBookingUsers,
 } from 'src/service/getEventStats';
+import LockScreen from '../authentication/lockScreen/LockScreen';
 
 const Dashboard3 = () => {
   const { id } = useParams<{ id: string }>(); // Get eventId from URL
@@ -109,6 +110,7 @@ const Dashboard3 = () => {
   ];
   return (
     <>
+      <LockScreen />
       <BreadcrumbComp title="Event Stats" items={BCrumb} />
       <div className="grid grid-cols-12 gap-30">
         <div className="col-span-12">

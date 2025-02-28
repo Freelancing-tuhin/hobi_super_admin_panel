@@ -1,14 +1,16 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { format } from 'date-fns';
 import { Dropdown, Table } from 'flowbite-react';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import SimpleBar from 'simplebar-react';
 import { getEvent } from 'src/service/getEvents';
 import EditEventModal from './EditEventModal';
 import { deleteEvent } from 'src/service/deleteEvent';
+import { AuthContext } from 'src/context/authContext/AuthContext';
 
 const EventTable = ({ HiOutlineDotsVertical }: any) => {
+  const { user }: any = useContext(AuthContext);
   const [events, setEvents] = useState([]);
   const [editedevents, setEditedevents] = useState();
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -21,7 +23,7 @@ const EventTable = ({ HiOutlineDotsVertical }: any) => {
   const getEvents = async () => {
     try {
       const response = await getEvent({
-        filter: { organizerId: '67b1e4a127162a76e667d1b6' },
+        filter: { organizerId: user?._id },
       });
       setEvents(response.result || []);
     } catch (error) {

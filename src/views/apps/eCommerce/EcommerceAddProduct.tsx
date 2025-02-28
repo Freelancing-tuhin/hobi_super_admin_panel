@@ -6,9 +6,11 @@ import Variation from 'src/components/apps/ecommerce/addProduct/Variation';
 import Thumbnail from 'src/components/apps/ecommerce/editProduct/Thumbnail';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import { Button } from 'flowbite-react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { createEvent, CreateEventPayload } from 'src/service/createEvent';
 import { useNavigate } from 'react-router';
+import { AuthContext } from 'src/context/authContext/AuthContext';
+import LockScreen from 'src/views/authentication/lockScreen/LockScreen';
 
 const BCrumb = [
   {
@@ -21,6 +23,7 @@ const BCrumb = [
 ];
 
 const AddProduct = () => {
+  const { user }: any = useContext(AuthContext);
   const [eventData, setEventData] = useState({
     title: '',
     category: '',
@@ -37,7 +40,7 @@ const AddProduct = () => {
     isTicketed: false,
     ticketName: '',
     ticketPrice: 0,
-    organizerId: '67b1e4a127162a76e667d1b6',
+    organizerId: user?._id,
   });
   const navigate = useNavigate();
   const [banner, setBanner] = useState<string | null>(null);
@@ -71,6 +74,7 @@ const AddProduct = () => {
 
   return (
     <>
+      <LockScreen />
       <BreadcrumbComp title="Add Event" items={BCrumb} />
       <div className="grid grid-cols-12 gap-[30px]">
         <div className="lg:col-span-8 col-span-12">

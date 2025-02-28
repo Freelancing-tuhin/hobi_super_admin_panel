@@ -3,14 +3,16 @@ import Customer from '../../components/dashboards/Dashboard1/Customer';
 import Project from '../../components/dashboards/Dashboard1/Project';
 import RevenueForcast from '../../components/dashboards/Dashboard1/RevenueForcast';
 import WelcomeBox from '../../components/dashboards/Dashboard1/WelcomeBox';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from 'src/context/authContext/AuthContext';
+import LockScreen from '../authentication/lockScreen/LockScreen';
 
 const Dashboard1 = () => {
   const [basicData, setBasicData] = useState<any>();
-
+  const { user }: any = useContext(AuthContext);
   const getBaseData = async () => {
     try {
-      const organizerId = '67b1e4a127162a76e667d1b6';
+      const organizerId = user?._id;
       const response = await getBasicData(organizerId);
       setBasicData(response);
     } catch (error) {}
@@ -22,6 +24,7 @@ const Dashboard1 = () => {
 
   return (
     <>
+      <LockScreen />
       <div className="grid grid-cols-12 gap-30">
         <div className="lg:col-span-5 col-span-12">
           <WelcomeBox basicData={basicData} />
