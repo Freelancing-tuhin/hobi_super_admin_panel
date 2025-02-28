@@ -1,6 +1,7 @@
 import { UserDataProvider } from 'src/context/UserDataContext';
 import Introduction from './Introduction';
 import ProfileBanner from './ProfileBanner';
+import DocumentUploader from './Documents';
 
 const UserProfileApp = () => {
   return (
@@ -20,7 +21,9 @@ const UserProfileApp = () => {
               {/* Photos */}
             </div>
           </div>
-          <div className="lg:col-span-8 col-span-12">{/* <Post /> */}</div>
+          <div className="lg:col-span-8 col-span-12">
+            <DocumentUploader />
+          </div>
         </div>
       </UserDataProvider>
     </>
