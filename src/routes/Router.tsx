@@ -1,9 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { lazy } from 'react';
+import { lazy, useContext } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import FrontendLayout from 'src/layouts/blank/FrontendLayout';
+import { AuthContext } from 'src/context/authContext/AuthContext';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -154,7 +155,9 @@ const HeadlessSwitch = Loadable(lazy(() => import('../views/headless-form/Headle
 const HeadlessTextarea = Loadable(lazy(() => import('../views/headless-form/HeadlessTextarea')));
 
 // authentication
+const Login = Loadable(lazy(() => import('../views/authentication/auth1/Login')));
 const Login2 = Loadable(lazy(() => import('../views/authentication/auth2/Login')));
+const Register = Loadable(lazy(() => import('../views/authentication/auth1/Register')));
 const Register2 = Loadable(lazy(() => import('../views/authentication/auth2/Register')));
 const ForgotPassword = Loadable(lazy(() => import('../views/authentication/auth1/ForgotPassword')));
 const ForgotPassword2 = Loadable(
@@ -198,6 +201,10 @@ const ReactRowSelectionTable = Loadable(
 const ReactSortingTable = Loadable(lazy(() => import('../views/react-tables/sorting/page')));
 const ReactStickyTable = Loadable(lazy(() => import('../views/react-tables/sticky/page')));
 
+const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+  const { user }: any = useContext(AuthContext);
+  return user ? children : <Navigate to="/auth/auth2/login" replace />;
+};
 const Router = [
   {
     path: '/',
@@ -207,16 +214,59 @@ const Router = [
         path: '/',
         exact: true,
         element: (
-          <>
-            <Dashboard1 />
-            <Dashboard2 />
-          </>
+          <ProtectedRoute>
+            <>
+              <Dashboard1 />
+              <Dashboard2 />
+            </>
+          </ProtectedRoute>
         ),
       },
-      { path: '/Event/:id', exact: true, element: <Dashboard3 /> },
-      { path: '/Event/list', exact: true, element: <EcomProductList /> },
-      { path: '/Event/add', exact: true, element: <EcommerceAddProduct /> },
-      { path: '/reports', exact: true, element: <InvoiceList /> },
+      {
+        path: '/Event/:id',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <Dashboard3 />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/Event/list',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <EcomProductList />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/Event/add',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <EcommerceAddProduct />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/reports',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <InvoiceList />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/apps/user-profile/profile',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        ),
+      },
       // Apps
       { path: '/apps/contacts', element: <Contact /> },
       { path: '/apps/ecommerce/shop', element: <Ecommerce /> },
@@ -228,7 +278,6 @@ const Router = [
       { path: '/apps/blog/post', element: <Blog /> },
       { path: '/apps/blog/detail/:id', element: <BlogDetail /> },
       { path: '/apps/chats', element: <Chats /> },
-      { path: '/apps/user-profile/profile', element: <UserProfile /> },
       { path: '/apps/user-profile/followers', element: <Followers /> },
       { path: '/apps/user-profile/friends', element: <Friends /> },
       { path: '/apps/user-profile/gallery', element: <Gallery /> },
