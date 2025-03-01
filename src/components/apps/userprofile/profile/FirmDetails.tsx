@@ -8,16 +8,13 @@ const FirmDetails = () => {
   const [serviceCategory, setServiceCategory] = useState('');
   const [typeOfFirm, setTypeOfFirm] = useState('');
 
-  const handleUpdsate = () => {
-    console.log('Updated Details:', { serviceCategory, typeOfFirm });
-    // Add API call or state update logic here
-  };
-
   const handleUpdate = async () => {
     try {
-      const response = await updateOrganizerProfile(user?._id, { serviceCategory, typeOfFirm });
+      const response = await updateOrganizerProfile(user?._id, {
+        service_category: serviceCategory,
+        type_of_firm: typeOfFirm,
+      });
       login(response?.result);
-      alert('Bank details updated successfully!');
     } catch (error) {
       console.error('Error updating bank details:', error);
       alert('Failed to update bank details.');
@@ -25,7 +22,7 @@ const FirmDetails = () => {
   };
 
   return (
-    <CardBox className="">
+    <CardBox className="w-full max-w-4xl">
       <h2 className="card-title">Service Details</h2>
       <p className="card-subtitle mb-2">
         Update your service category and firm type to ensure accurate classification.

@@ -26,15 +26,14 @@ const UserProfileApp = () => {
               {/* Photos */}
             </div>
           </div>
-          <div className="lg:col-span-8 col-">
-            <div className="span-12">
+          <div className="lg:col-span-8 col-span-12">
+            <div className="col-span-12">
               <BankDetails />
             </div>
-            <div className="span-12 mt-8">
+            <div className="col-span-12 mt-8">
               <FirmDetails />
             </div>
           </div>
-          <div className="lg:col-span-6 col-span-11"></div>
         </div>
       </UserDataProvider>
     </>
