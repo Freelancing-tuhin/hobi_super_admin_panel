@@ -1,8 +1,5 @@
-import { TbBrandDribbble, TbBrandFacebook, TbBrandYoutube } from 'react-icons/tb';
-
 import Banner from '/src/assets/images/backgrounds/profilebg.jpg';
 import { Button } from 'flowbite-react';
-import { Link } from 'react-router';
 import CardBox from 'src/components/shared/CardBox';
 import { AuthContext } from 'src/context/authContext/AuthContext';
 import { useContext } from 'react';

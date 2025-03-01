@@ -1,5 +1,4 @@
 import { useState, useContext } from 'react';
-import axios from 'axios';
 import CardBox from 'src/components/shared/CardBox';
 import { updateOrganizerProfile } from 'src/service/auth';
 import { AuthContext } from 'src/context/authContext/AuthContext';

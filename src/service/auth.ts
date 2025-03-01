@@ -12,7 +12,7 @@ interface LoginResponse {
 export const loginOrganizer = async (email: string, password: string): Promise<LoginResponse> => {
   try {
     const response = await axios.post<LoginResponse>(
-      'http://localhost:8989/api/v1/auth/organizer-login',
+      'https://hobi-app-server.onrender.com/api/v1/auth/organizer-login',
       {
         email,
         password,
@@ -26,7 +26,7 @@ export const loginOrganizer = async (email: string, password: string): Promise<L
   }
 };
 
-const API_BASE_URL = 'http://localhost:8989/api/v1/auth';
+const API_BASE_URL = 'https://hobi-app-server.onrender.com/api/v1/auth';
 
 export interface OrganizerSignupData {
   full_name: string;
@@ -52,7 +52,7 @@ export const organizerSignup = async (data: OrganizerSignupData) => {
 export const updateOrganizerProfile = async (organizerId: string, profileData: any) => {
   try {
     const response = await axios.patch(
-      `http://localhost:8989/api/v1/organizer/update_profile`,
+      `https://hobi-app-server.onrender.com/api/v1/organizer/update_profile`,
       profileData,
       {
         params: { organizerId },
