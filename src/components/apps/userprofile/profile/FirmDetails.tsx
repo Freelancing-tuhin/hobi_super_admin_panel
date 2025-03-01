@@ -1,12 +1,27 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CardBox from 'src/components/shared/CardBox';
 import { AuthContext } from 'src/context/authContext/AuthContext';
 import { updateOrganizerProfile } from 'src/service/auth';
+import axios from 'axios';
 
 const FirmDetails = () => {
   const { user, login } = useContext<any>(AuthContext);
   const [serviceCategory, setServiceCategory] = useState('');
-  const [typeOfFirm, setTypeOfFirm] = useState('');
+  const [typeOfFirm, setTypeOfFirm] = useState(user?.type_of_firm || '');
+  const [services, setServices] = useState<{ _id: string; service_name: string }[]>([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await axios.get('http://localhost:8989/api/v1/services/get-all');
+        setServices(response.data.result);
+      } catch (error) {
+        console.error('Error fetching services:', error);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   const handleUpdate = async () => {
     try {
@@ -16,8 +31,8 @@ const FirmDetails = () => {
       });
       login(response?.result);
     } catch (error) {
-      console.error('Error updating bank details:', error);
-      alert('Failed to update bank details.');
+      console.error('Error updating details:', error);
+      alert('Failed to update details.');
     }
   };
 
@@ -35,9 +50,11 @@ const FirmDetails = () => {
           className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="">Select a category</option>
-          <option value="IT Services">IT Services</option>
-          <option value="Financial Services">Financial Services</option>
-          <option value="Healthcare">Healthcare</option>
+          {services.map((service) => (
+            <option key={service._id} value={service._id}>
+              {service.service_name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="form-group mt-2">
