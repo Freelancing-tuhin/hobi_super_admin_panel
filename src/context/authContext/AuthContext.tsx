@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useState, ReactNode } from 'react';
 
 export interface User {
   _id: string;

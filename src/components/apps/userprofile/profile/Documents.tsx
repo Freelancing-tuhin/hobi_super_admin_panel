@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from 'src/context/authContext/AuthContext';
 import { uploadOrganizerDocuments } from 'src/service/uploadDocs';
 
@@ -11,7 +11,7 @@ const stepLabels = [
   'Health & Safety Documents',
 ];
 
-const fieldMapping: Record<string, string> = {
+const fieldMapping: any = {
   'Licenses for Establishment': 'licenses_for_establishment',
   'Certificate of Incorporation': 'certificate_of_incorporation',
   'Licenses for Activity Undertaken': 'licenses_for_activity_undertaken',
@@ -23,24 +23,33 @@ const fieldMapping: Record<string, string> = {
 const DocumentUploadStepper = () => {
   const { login, user } = useContext<any>(AuthContext);
   const [currentStep, setCurrentStep] = useState(0);
-  const [files, setFiles] = useState<Record<string, File | null>>({});
-  const [uploadProgress, setUploadProgress] = useState<number>(0);
-  const [uploadCompleted, setUploadCompleted] = useState<boolean>(false);
+  const [files, setFiles] = useState<any>({});
+  const [uploadCompleted, setUploadCompleted] = useState(false);
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length > 0) {
+  const backendField = fieldMapping[stepLabels[currentStep]];
+  const existingFileUrl = user?.[backendField] || null;
+
+  const handleFileChange = (event: any) => {
+    if (event.target.files?.length > 0) {
       const file = event.target.files[0];
-      const backendField = fieldMapping[stepLabels[currentStep]]; // Get backend field name
-      const newFiles = { ...files, [backendField]: file }; // Store using backend field name
-      setFiles(newFiles);
+      setFiles({ ...files, [backendField]: file });
     }
   };
+
+  //   const removeFile = () => {
+  //     setFiles((prevFiles:any) => {
+  //       const updatedFiles = { ...prevFiles };
+  //       delete updatedFiles[backendField];
+  //       return updatedFiles;
+  //     });
+  //     document.getElementById('file-upload').value = '';
+  //   };
 
   const nextStep = () => {
     if (currentStep < stepLabels.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      handleUpload(); // Upload on the last step
+      handleUpload();
     }
   };
 
@@ -50,10 +59,8 @@ const DocumentUploadStepper = () => {
 
   const handleUpload = async () => {
     try {
-      console.log('=====docs', files);
-      const organizerId = user?._id; // Replace with actual ID
+      const organizerId = user?._id;
       const response = await uploadOrganizerDocuments(organizerId, files);
-      console.log('Upload Success:', response);
       login(response?.result);
       setUploadCompleted(true);
     } catch (error) {
@@ -61,64 +68,45 @@ const DocumentUploadStepper = () => {
     }
   };
 
-  const backendField = fieldMapping[stepLabels[currentStep]]; // Get backend field name
-
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md">
-      {/* Step Heading */}
-      <h2 className="text-lg font-semibold text-gray-700 text-center mb-4">
+    <div className=" mx-auto p-6 bg-white shadow-md rounded-md">
+      <h2 className="text-2xl font-semibold text-gray-700 text-center mb-4">Your Documents</h2>
+      <h2 className="text-sm font-semibold text-gray-700 text-left mb-4 pl-2">
         {stepLabels[currentStep]}
       </h2>
 
-      {/* Upload Box */}
       <div className="border-2 border-dashed border-gray-300 p-6 text-center rounded-lg cursor-pointer">
-        {files[backendField] ? (
+        <>
+          <label htmlFor="file-upload" className="block">
+            <p className="text-gray-500 mt-2">Upload file</p>
+            <p className="text-xs text-gray-400 mb-4">PNG, JPG, SVG, WEBP, and GIF are allowed.</p>
+          </label>
           <div className="relative">
-            {/* Preview Image (if applicable) */}
-            {files[backendField]?.type.startsWith('image/') && (
+            {files[backendField] ? (
               <img
-                src={URL.createObjectURL(files[backendField]!)}
+                src={URL.createObjectURL(files[backendField])}
                 alt="Preview"
                 className="w-full max-h-40 object-cover rounded-md"
               />
+            ) : (
+              <img
+                src={existingFileUrl}
+                alt="Uploaded Document"
+                className="w-full max-h-40 object-cover rounded-md"
+              />
             )}
-            {/* File Name */}
-            <p className="text-gray-600 mt-2">{files[backendField]?.name}</p>
-            {/* Replace Button */}
-            <button
-              onClick={() => setFiles({ ...files, [backendField]: null })}
-              className="text-red-500 text-sm mt-2 underline"
-            >
-              Remove & Upload Another
-            </button>
+            <p className="text-gray-600 mt-2">{files[backendField]?.name || 'Existing File'}</p>
           </div>
-        ) : (
-          <label htmlFor="file-upload" className="block">
-            <p className="text-gray-500 mt-2">Upload file</p>
-            <p className="text-xs text-gray-400">PNG, JPG, SVG, WEBP, and GIF are allowed.</p>
-          </label>
-        )}
+        </>
 
-        {/* Hidden File Input */}
         <input id="file-upload" type="file" onChange={handleFileChange} className="hidden" />
       </div>
 
-      {/* Progress Bar */}
-      {uploadProgress > 0 && (
-        <div className="w-full bg-gray-200 rounded-full h-2 mt-4">
-          <div
-            className="bg-blue-500 h-2 rounded-full"
-            style={{ width: `${uploadProgress}%` }}
-          ></div>
-        </div>
-      )}
-
-      {/* Buttons */}
       <div className="flex justify-between mt-4">
         <button
           onClick={prevStep}
           disabled={currentStep === 0}
-          className="px-4 py-2 bg-gray-300 rounded-md disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300 text-black rounded-md disabled:opacity-50"
         >
           Back
         </button>

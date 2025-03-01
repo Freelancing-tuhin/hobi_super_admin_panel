@@ -48,3 +48,23 @@ export const organizerSignup = async (data: OrganizerSignupData) => {
     throw error.response?.data || 'Signup failed'; // Throws error if signup fails
   }
 };
+
+export const updateOrganizerProfile = async (organizerId: string, profileData: any) => {
+  try {
+    const response = await axios.patch(
+      `http://localhost:8989/api/v1/organizer/update_profile`,
+      profileData,
+      {
+        params: { organizerId },
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error('Error updating organizer profile:', error);
+    throw error;
+  }
+};
