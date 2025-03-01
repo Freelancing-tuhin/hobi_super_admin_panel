@@ -10,11 +10,20 @@ const REQUIRED_FIELDS = [
   'insurance_for_outdoor_activities',
   'health_safety_documents',
 ]; // Add any required fields here
+const REQUIRED_FIELDS_2 = [
+  'PAN',
+  'bank_account',
+  'GST',
+  'bank_account',
+  'bank_account_type',
+  'IFSC_code',
+]; // Add any required fields here
 
 const LockScreen = () => {
   const { user }: any = useContext(AuthContext);
 
   const hasAllRequiredFields = REQUIRED_FIELDS.every((field) => user?.[field]);
+  const hasbankRequiredFields = REQUIRED_FIELDS_2.every((field) => user?.[field]);
 
   if (hasAllRequiredFields && user?.is_verified) {
     return null; // Don't show LockScreen if user is verified
@@ -31,6 +40,11 @@ const LockScreen = () => {
           <p className="text-sm text-gray-300">
             {' '}
             Please upload your documents to access all features.
+          </p>
+        ) : !hasbankRequiredFields ? (
+          <p className="text-sm text-gray-300">
+            {' '}
+            Please fill your bank details to access all features.
           </p>
         ) : !user?.is_verified ? (
           <p className="text-sm text-gray-300">Please wait until your account is verified.</p>

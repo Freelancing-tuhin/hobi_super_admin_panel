@@ -22,7 +22,11 @@ const ProfileBanner = () => {
                   <p className="text-darklink dark:text-bodytext text-sm">Ratings</p>
                 </div>
                 <div className="text-center">
-                  <h4 className="text-xl">✅verified</h4>
+                  {user?.is_verified ? (
+                    <h4 className="text-xl">✅verified</h4>
+                  ) : (
+                    <h4 className="text-xl">not verified</h4>
+                  )}
                   <p className="text-darklink dark:text-bodytext text-sm">Account</p>
                 </div>
               </div>
@@ -42,15 +46,6 @@ const ProfileBanner = () => {
             </div>
             <div className="lg:col-span-4 col-span-12 lg:order-3 order-3">
               <div className="flex items-center gap-3.5 lg:justify-end justify-center h-full xl:pe-4">
-                <Button as={Link} to={''} className="h-9 w-9 rounded-full p-0" color={'primary'}>
-                  <TbBrandFacebook size={20} />
-                </Button>
-                <Button as={Link} to={''} className="h-9 w-9 rounded-full p-0" color={'secondary'}>
-                  <TbBrandDribbble size={20} />
-                </Button>
-                <Button as={Link} to={''} className="h-9 w-9 rounded-full p-0" color={'error'}>
-                  <TbBrandYoutube size={20} />
-                </Button>
                 <Button color={'primary'}>Edit Profile</Button>
               </div>
             </div>
