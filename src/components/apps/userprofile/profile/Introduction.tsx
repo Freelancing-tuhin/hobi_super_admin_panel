@@ -16,10 +16,6 @@ const Introduction = () => {
         </p>
         <div className="flex flex-col gap-3 mt-4">
           <div className="flex gap-3 items-center">
-            <Icon icon="solar:user-rounded-linear" height="20" className="text-ld" />
-            <p className="text-ld font-semibold">{user?.gender}</p>
-          </div>
-          <div className="flex gap-3 items-center">
             <Icon icon="solar:mailbox-outline" height="20" className="text-ld" />
             <p className="text-ld font-semibold">{user?.email}</p>
           </div>

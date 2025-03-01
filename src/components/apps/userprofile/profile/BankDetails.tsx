@@ -13,24 +13,25 @@ interface BankDetailsType {
 }
 
 const BankDetails = () => {
-  const { user } = useContext<any>(AuthContext);
+  const { user, login } = useContext<any>(AuthContext);
 
   const [step, setStep] = useState(1);
   const [bankDetails, setBankDetails] = useState<BankDetailsType>({
-    PAN: '',
-    GST: '',
-    bank_account: '',
-    bank_account_type: '',
-    IFSC_code: '',
+    PAN: user?.PAN || '',
+    GST: user?.GST || '',
+    bank_account: user?.bank_account || '',
+    bank_account_type: user?.bank_account_type || '',
+    IFSC_code: user?.IFSC_code || '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: any) => {
     setBankDetails({ ...bankDetails, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async () => {
     try {
-      await updateOrganizerProfile(user?._id, bankDetails);
+      const response = await updateOrganizerProfile(user?._id, bankDetails);
+      login(response?.result);
       alert('Bank details updated successfully!');
     } catch (error) {
       console.error('Error updating bank details:', error);
@@ -44,9 +45,8 @@ const BankDetails = () => {
         <div className="p-">
           <h2 className="card-title">Bank Details</h2>
           <p className="card-subtitle">
-            {' '}
-            Hello, I am David McMichael. I love making websites and graphics. Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit.
+            Securely update your bank details to ensure smooth transactions. Please provide accurate
+            PAN, GST, and account information to avoid payment delays.
           </p>
 
           {/* Stepper */}
@@ -122,14 +122,23 @@ const BankDetails = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Account Type</label>
-                  <input
-                    type="text"
+                  <select
                     name="bank_account_type"
                     value={bankDetails.bank_account_type}
                     onChange={handleChange}
                     className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                  />
+                  >
+                    <option value="">Select Account Type</option>
+                    <option value="savings">Savings Account</option>
+                    <option value="current">Current Account</option>
+                    <option value="student">Student Account</option>
+                    <option value="salary">Salary Account</option>
+                    <option value="business">Business Account</option>
+                    <option value="joint">Joint Account</option>
+                    <option value="fixed">Fixed Deposit Account</option>
+                  </select>
                 </div>
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700">IFSC Code</label>
                   <input
