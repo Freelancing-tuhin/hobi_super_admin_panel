@@ -11,6 +11,28 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
     setEditedEvent({ ...editedEvent, [name]: type === 'checkbox' ? checked : value });
   };
 
+  const handleInputChange = (index: number, field: string, value: string) => {
+    if (!editedEvent?.tickets) return; // Ensure tickets exist
+
+    const updatedTickets = [...editedEvent.tickets]; // Clone array
+    updatedTickets[index] = { ...updatedTickets[index], [field]: value }; // Update ticket
+
+    setEditedEvent({ ...editedEvent, tickets: updatedTickets }); // Update state
+  };
+
+  const addTicket = () => {
+    setEditedEvent((prevEvent: any) => ({
+      ...prevEvent,
+      tickets: [...(prevEvent?.tickets || []), { ticketName: '', ticketPrice: '' }],
+    }));
+  };
+
+  const removeTicket = (index: number) => {
+    setEditedEvent((prevEvent: any) => ({
+      ...prevEvent,
+      tickets: prevEvent?.tickets?.filter((_, i) => i !== index) || [],
+    }));
+  };
   const handleSave = async () => {
     // onSave(editedEvent);
     try {
@@ -27,8 +49,8 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
   }, [eventData]);
 
   return (
-    <Modal show={open} onClose={onClose} title="Edit Event" size="xl" dismissible>
-      <div className="p-6 space-y-4">
+    <Modal show={open} onClose={onClose} title="Edit Event" size="2xl" dismissible className="">
+      <div className="p-6 space-y-4 max-h-[80rem]">
         <div className="">
           <div className="text-2xl font-semibold text-gray-800">Edit Event</div>
           <div className="text-sm text-gray-600 mb-4 mt-2">Edit details of the selected event</div>
@@ -58,7 +80,19 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
                 onChange={handleChange}
               />
             </div>
-            <div>
+            <div className="col-span-2">
+              <Label htmlFor="description" value="Description" />
+              <textarea
+                id="description"
+                name="description"
+                value={editedEvent?.description || ''}
+                onChange={handleChange}
+                rows={4} // Adjust the number of rows as needed
+                placeholder="Enter event description..."
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            {/* <div>
               <Label htmlFor="category" value="Category" />
               <TextInput
                 id="category"
@@ -75,7 +109,7 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
                 value={editedEvent?.type || ''}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
           </div>
         )}
 
@@ -91,6 +125,7 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
                 onChange={handleChange}
               />
             </div>
+
             <div>
               <Label htmlFor="startTime" value="Start Time" />
               <TextInput
@@ -126,15 +161,6 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
 
         {step === 3 && (
           <div className="grid grid-cols-2 gap-6">
-            <div className="col-span-2">
-              <Label htmlFor="description" value="Description" />
-              <TextInput
-                id="description"
-                name="description"
-                value={editedEvent?.description || ''}
-                onChange={handleChange}
-              />
-            </div>
             <div className="flex items-center space-x-2 col-span-2">
               <Checkbox
                 id="isTicketed"
@@ -146,25 +172,38 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
             </div>
             {editedEvent?.isTicketed && (
               <>
-                <div>
-                  <Label htmlFor="ticketName" value="Ticket Name" />
-                  <TextInput
-                    id="ticketName"
-                    name="ticketName"
-                    value={editedEvent?.ticketName || ''}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="ticketPrice" value="Ticket Price ($)" />
-                  <TextInput
-                    id="ticketPrice"
-                    name="ticketPrice"
-                    type="number"
-                    value={editedEvent?.ticketPrice || ''}
-                    onChange={handleChange}
-                  />
-                </div>
+                {editedEvent.tickets.map((ticket: any, index: any) => (
+                  <div key={index} className="mb-4 border p-4 rounded-lg">
+                    <div className="mb-2 block">
+                      <Label htmlFor={`ticketName-${index}`} value={`Ticket Name ${index + 1}`} />
+                    </div>
+                    <TextInput
+                      id={`ticketName-${index}`}
+                      type="text"
+                      name="ticketName"
+                      value={ticket.ticketName}
+                      onChange={(e) => handleInputChange(index, 'ticketName', e.target.value)}
+                      placeholder="Enter ticket name"
+                    />
+                    <div className="mb-2 block mt-3">
+                      <Label htmlFor={`ticketPrice-${index}`} value="Ticket Price" />
+                    </div>
+                    <TextInput
+                      id={`ticketPrice-${index}`}
+                      type="number"
+                      name="ticketPrice"
+                      value={ticket.ticketPrice}
+                      onChange={(e) => handleInputChange(index, 'ticketPrice', e.target.value)}
+                      placeholder="Enter ticket price"
+                    />
+                    <Button color="red" className="mt-3" onClick={() => removeTicket(index)}>
+                      Remove Ticket
+                    </Button>
+                  </div>
+                ))}
+                <Button color="primary" className="mt-3 h-10 w-32" onClick={addTicket}>
+                  Add Ticket
+                </Button>
               </>
             )}
           </div>

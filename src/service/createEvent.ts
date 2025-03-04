@@ -15,8 +15,7 @@ export interface CreateEventPayload {
   description: string;
   bannerImage: File;
   isTicketed: boolean;
-  ticketName?: string;
-  ticketPrice?: number;
+  tickets?: any;
   organizerId: string;
 }
 
@@ -39,15 +38,14 @@ export const createEvent = async (eventData: CreateEventPayload): Promise<void> 
     formData.append('banner_Image', eventData.bannerImage);
     formData.append('isTicketed', String(eventData.isTicketed));
 
-    if (eventData.isTicketed) {
-      formData.append('ticketName', eventData.ticketName || '');
-      formData.append('ticketPrice', eventData.ticketPrice?.toString() || '0');
+    if (eventData.isTicketed && eventData.tickets) {
+      formData.append('tickets', JSON.stringify(eventData.tickets));
     }
 
     formData.append('organizerId', eventData.organizerId);
 
     const response = await axios.post(
-      'https://hobi-app-server.onrender.com/api/v1/events/create-event',
+      'http://localhost:8989/api/v1/events/create-event',
       formData,
       {
         headers: {

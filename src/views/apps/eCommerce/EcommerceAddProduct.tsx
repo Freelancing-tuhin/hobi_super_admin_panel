@@ -38,8 +38,9 @@ const AddProduct = () => {
     },
     description: '',
     isTicketed: false,
-    ticketName: '',
-    ticketPrice: 0,
+    // ticketName: '',
+    // ticketPrice: 0,
+    tickets: [],
     organizerId: user?._id,
   });
   const navigate = useNavigate();
@@ -69,7 +70,7 @@ const AddProduct = () => {
 
     console.log('Submitting event:', eventPayload);
     await createEvent(eventPayload);
-    navigate('/Event/list');
+    // navigate('/Event/list');
   };
 
   return (
