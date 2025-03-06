@@ -5,6 +5,8 @@ import { createBrowserRouter, Navigate } from 'react-router';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import FrontendLayout from 'src/layouts/blank/FrontendLayout';
 import { AuthContext } from 'src/context/authContext/AuthContext';
+import OrganizerList from 'src/views/apps/eCommerce/OrganizerList';
+import ProfilePage from 'src/views/apps/eCommerce/ProfilePage';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -241,11 +243,20 @@ const Router = [
         ),
       },
       {
-        path: '/Event/add',
+        path: '/organizers',
         exact: true,
         element: (
           <ProtectedRoute>
-            <EcommerceAddProduct />
+            <OrganizerList />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/organizer/:id',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
           </ProtectedRoute>
         ),
       },

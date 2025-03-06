@@ -20,8 +20,8 @@ const fieldMapping: any = {
   'Health & Safety Documents': 'health_safety_documents',
 };
 
-const DocumentUploadStepper = () => {
-  const { login, user } = useContext<any>(AuthContext);
+const DocumentUploadStepper = ({ user }: any) => {
+  // const { login, user } = useContext<any>(AuthContext);
   const [currentStep, setCurrentStep] = useState(0);
   const [files, setFiles] = useState<any>({});
   const [uploadCompleted, setUploadCompleted] = useState(false);
@@ -61,7 +61,7 @@ const DocumentUploadStepper = () => {
     try {
       const organizerId = user?._id;
       const response = await uploadOrganizerDocuments(organizerId, files);
-      login(response?.result);
+      // login(response?.result);
       setUploadCompleted(true);
     } catch (error) {
       console.error('Upload Failed', error);

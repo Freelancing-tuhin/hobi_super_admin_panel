@@ -41,7 +41,7 @@ const SidebarContent: MenuItem[] = [
         name: 'Organizers',
         icon: 'solar:widget-add-line-duotone',
         id: uniqueId(),
-        url: '/Event/add',
+        url: '/organizers',
       },
       // {
       //   name: 'Dashboard2',

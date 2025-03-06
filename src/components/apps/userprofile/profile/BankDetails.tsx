@@ -11,8 +11,8 @@ interface BankDetailsType {
   IFSC_code: string;
 }
 
-const BankDetails = () => {
-  const { user, login } = useContext<any>(AuthContext);
+const BankDetails = ({ user }: any) => {
+  // const { user, login } = useContext<any>(AuthContext);
 
   const [step, setStep] = useState(1);
   const [bankDetails, setBankDetails] = useState<BankDetailsType>({
@@ -30,7 +30,7 @@ const BankDetails = () => {
   const handleSubmit = async () => {
     try {
       const response = await updateOrganizerProfile(user?._id, bankDetails);
-      login(response?.result);
+      // login(response?.result);
       alert('Bank details updated successfully!');
     } catch (error) {
       console.error('Error updating bank details:', error);

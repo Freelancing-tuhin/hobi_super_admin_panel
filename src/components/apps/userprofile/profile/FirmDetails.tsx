@@ -4,8 +4,8 @@ import { AuthContext } from 'src/context/authContext/AuthContext';
 import { updateOrganizerProfile } from 'src/service/auth';
 import axios from 'axios';
 
-const FirmDetails = () => {
-  const { user, login } = useContext<any>(AuthContext);
+const FirmDetails = ({ user }: any) => {
+  // const { user, login } = useContext<any>(AuthContext);
   const [serviceCategory, setServiceCategory] = useState('');
   const [typeOfFirm, setTypeOfFirm] = useState(user?.type_of_firm || '');
   const [services, setServices] = useState<{ _id: string; service_name: string }[]>([]);
@@ -31,7 +31,7 @@ const FirmDetails = () => {
         service_category: serviceCategory,
         type_of_firm: typeOfFirm,
       });
-      login(response?.result);
+      // login(response?.result);
     } catch (error) {
       console.error('Error updating details:', error);
       alert('Failed to update details.');
