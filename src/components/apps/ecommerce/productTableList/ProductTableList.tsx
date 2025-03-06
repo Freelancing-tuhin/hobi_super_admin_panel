@@ -67,33 +67,7 @@ const ProductTablelist = () => {
     <>
       <CardBox>
         {/* Search  */}
-        <div className="flex gap-3 justify-between items-center mb-5">
-          <TextInput
-            id="search"
-            placeholder="Search Products"
-            className="form-control w-full sm:max-w-60 max-w-full"
-            sizing="md"
-            required
-            onChange={handleSearch}
-            value={search}
-            icon={() => <Icon icon="solar:magnifer-line-duotone" height={18} />}
-          />
-          <div className="flex gap-4">
-            {selectAll ? (
-              <Button color={'lightprimary'} className="btn-circle p-0">
-                <Icon
-                  icon="solar:trash-bin-minimalistic-outline"
-                  height={18}
-                  onClick={handleDelete}
-                />
-              </Button>
-            ) : (
-              <Button color={'lightprimary'} className="btn-circle p-0">
-                <Icon icon="solar:filter-outline" height={18} />
-              </Button>
-            )}
-          </div>
-        </div>
+
         {/* Table */}
         <EventTable
           selectAll={selectAll}

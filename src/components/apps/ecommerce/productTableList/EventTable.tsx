@@ -50,6 +50,13 @@ const EventTable = ({ HiOutlineDotsVertical }: any) => {
 
   return (
     <>
+      <div className="flex justify-end mb-4 mt-2 ">
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+      </div>
       <SimpleBar className="max-h-[580px]">
         <div className="border rounded-md border-ld overflow-x-auto">
           <Table>
@@ -111,13 +118,7 @@ const EventTable = ({ HiOutlineDotsVertical }: any) => {
           </Table>
         </div>
       </SimpleBar>
-      <div className="flex justify-center my-4">
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={(page) => setCurrentPage(page)}
-        />
-      </div>
+
       <EditEventModal
         eventData={editedevents}
         open={openEditModal}
