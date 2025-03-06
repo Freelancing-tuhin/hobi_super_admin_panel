@@ -76,19 +76,19 @@ const Reviews = ({ usersList }: any) => {
               .map((user: any, index: number) => (
                 <Table.Row key={index}>
                   <Table.Cell className="whitespace-nowrap ps-0">
-                    <p className="text-sm">{user.userId.full_name}</p>
+                    <p className="text-sm">{user?.full_name}</p>
                   </Table.Cell>
                   <Table.Cell className="whitespace-nowrap ps-0">
-                    <p className="text-sm">{formatDateTime(user.updatedAt)}</p>
+                    <p className="text-sm">{formatDateTime(user?.updatedAt)}</p>
                   </Table.Cell>
                   <Table.Cell className="whitespace-nowrap">
-                    <p className="text-ld">⭐ {user.rating}</p>
+                    <p className="text-ld">⭐ {user?.rating}</p>
                   </Table.Cell>
                   <Table.Cell className="whitespace-nowrap">
-                    <p className="text-sm">{user.comment}</p>
+                    <p className="text-sm">{user?.comment}</p>
                   </Table.Cell>
                   <Table.Cell className="whitespace-nowrap">
-                    <Button size="xs" onClick={() => handleSendMail(user.userId.email)}>
+                    <Button size="xs" onClick={() => handleSendMail(user?.userId?.email)}>
                       Send Mail
                     </Button>
                   </Table.Cell>

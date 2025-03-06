@@ -70,7 +70,7 @@ const AddProduct = () => {
 
     console.log('Submitting event:', eventPayload);
     await createEvent(eventPayload);
-    // navigate('/Event/list');
+    navigate('/Event/list');
   };
 
   return (

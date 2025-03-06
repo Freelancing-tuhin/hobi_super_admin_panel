@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react/dist/iconify.js';
 import { Modal, Button, TextInput, Label, Checkbox } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { editEvent } from 'src/service/editEvent';
@@ -172,10 +173,27 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
             </div>
             {editedEvent?.isTicketed && (
               <>
-                {editedEvent.tickets.map((ticket: any, index: any) => (
-                  <div key={index} className="mb-4 border p-4 rounded-lg">
-                    <div className="mb-2 block">
-                      <Label htmlFor={`ticketName-${index}`} value={`Ticket Name ${index + 1}`} />
+                {editedEvent.tickets.map((ticket: any, index: number) => (
+                  <div key={index} className="relative border p-4 rounded-lg shadow-sm bg-white">
+                    {/* Cross Icon for Removing Ticket */}
+                    <button
+                      onClick={() => removeTicket(index)}
+                      className="absolute top-2 right-2 text-red-500 hover:text-red-700 transition"
+                    >
+                      <Icon
+                        icon="solar:trash-bin-trash-linear"
+                        height="18"
+                        className="text-ld text-red-700"
+                      />
+                    </button>
+
+                    {/* Ticket Name Input */}
+                    <div className="mb-2">
+                      <Label
+                        htmlFor={`ticketName-${index}`}
+                        value={`Ticket ${index + 1}`}
+                        className="font-semibold"
+                      />
                     </div>
                     <TextInput
                       id={`ticketName-${index}`}
@@ -184,21 +202,26 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
                       value={ticket.ticketName}
                       onChange={(e) => handleInputChange(index, 'ticketName', e.target.value)}
                       placeholder="Enter ticket name"
+                      className="w-full"
                     />
-                    <div className="mb-2 block mt-3">
-                      <Label htmlFor={`ticketPrice-${index}`} value="Ticket Price" />
+
+                    {/* Ticket Price Input */}
+                    <div className="mt-3">
+                      <Label
+                        htmlFor={`ticketPrice-${index}`}
+                        value="Ticket Price"
+                        className="font-medium"
+                      />
+                      <TextInput
+                        id={`ticketPrice-${index}`}
+                        type="number"
+                        name="ticketPrice"
+                        value={ticket.ticketPrice}
+                        onChange={(e) => handleInputChange(index, 'ticketPrice', e.target.value)}
+                        placeholder="Enter ticket price"
+                        className="w-full"
+                      />
                     </div>
-                    <TextInput
-                      id={`ticketPrice-${index}`}
-                      type="number"
-                      name="ticketPrice"
-                      value={ticket.ticketPrice}
-                      onChange={(e) => handleInputChange(index, 'ticketPrice', e.target.value)}
-                      placeholder="Enter ticket price"
-                    />
-                    <Button color="red" className="mt-3" onClick={() => removeTicket(index)}>
-                      Remove Ticket
-                    </Button>
                   </div>
                 ))}
                 <Button color="primary" className="mt-3 h-10 w-32" onClick={addTicket}>
