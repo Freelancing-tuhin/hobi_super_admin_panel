@@ -4,7 +4,7 @@ import React from 'react';
 import { ProductProvider } from '../../../context/Ecommercecontext';
 import BreadcrumbComp from '../../../layouts/full/shared/breadcrumb/BreadcrumbComp';
 import ProductTableList from '../../../components/apps/ecommerce/productTableList/ProductTableList';
-import LockScreen from 'src/views/authentication/lockScreen/LockScreen';
+// import LockScreen from 'src/views/authentication/lockScreen/LockScreen';
 
 const BCrumb = [
   {
@@ -19,7 +19,7 @@ const BCrumb = [
 const EcomProductList = () => {
   return (
     <ProductProvider>
-      <LockScreen />
+      {/* <LockScreen /> */}
       <BreadcrumbComp title="Event list" items={BCrumb} />
       <ProductTableList />
     </ProductProvider>

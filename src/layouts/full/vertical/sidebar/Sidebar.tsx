@@ -28,7 +28,7 @@ const SidebarLayout = () => {
                     </div>
                     <div>
                       <p className="text-lg font-semibold">Tuhin Thakur</p>
-                      <p className="text-sm font-medium text-gray-600">(Organizer)</p>
+                      <p className="text-sm font-medium text-gray-600">(Admin)</p>
                     </div>
                   </div>
                 </div>

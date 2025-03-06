@@ -32,13 +32,13 @@ const SidebarContent: MenuItem[] = [
         url: '/',
       },
       {
-        name: 'My Events',
+        name: 'All Events',
         icon: 'solar:notebook-linear',
         id: uniqueId(),
         url: '/Event/list',
       },
       {
-        name: 'Add Event',
+        name: 'Organizers',
         icon: 'solar:widget-add-line-duotone',
         id: uniqueId(),
         url: '/Event/add',
