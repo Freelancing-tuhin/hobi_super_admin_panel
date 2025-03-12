@@ -24,7 +24,6 @@ const Dashboard1 = () => {
 
   return (
     <>
-      <LockScreen />
       <div className="grid grid-cols-12 gap-30">
         <div className="lg:col-span-5 col-span-12">
           <WelcomeBox basicData={basicData} />

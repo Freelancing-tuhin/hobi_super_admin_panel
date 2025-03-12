@@ -110,7 +110,6 @@ const Dashboard3 = () => {
   ];
   return (
     <>
-      <LockScreen />
       <BreadcrumbComp title="Event Stats" items={BCrumb} />
       <div className="grid grid-cols-12 gap-30">
         <div className="col-span-12">

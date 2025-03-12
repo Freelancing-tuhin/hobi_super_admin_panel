@@ -1,7 +1,7 @@
 import React from 'react';
 
 const LockScreen = () => {
-  return <div>LockScreen</div>;
+  return <div></div>;
 };
 
 export default LockScreen;

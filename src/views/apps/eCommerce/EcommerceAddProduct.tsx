@@ -75,7 +75,6 @@ const AddProduct = () => {
 
   return (
     <>
-      <LockScreen />
       <BreadcrumbComp title="Add Event" items={BCrumb} />
       <div className="grid grid-cols-12 gap-[30px]">
         <div className="lg:col-span-8 col-span-12">
