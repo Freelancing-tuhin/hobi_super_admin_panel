@@ -3,6 +3,7 @@ import CardBox from 'src/components/shared/CardBox';
 import { AuthContext } from 'src/context/authContext/AuthContext';
 import { updateOrganizerProfile } from 'src/service/auth';
 import axios from 'axios';
+import { API_BASE_URL } from 'src/config/config';
 
 const FirmDetails = ({ user }: any) => {
   // const { user, login } = useContext<any>(AuthContext);
@@ -13,9 +14,7 @@ const FirmDetails = ({ user }: any) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get(
-          'https://hobi-app-server.onrender.com/api/v1/services/get-all',
-        );
+        const response = await axios.get(`${API_BASE_URL}/api/v1/services/get-all`);
         setServices(response.data.result);
       } catch (error) {
         console.error('Error fetching services:', error);

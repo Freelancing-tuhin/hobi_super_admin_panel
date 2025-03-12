@@ -1,10 +1,9 @@
 import axios from 'axios';
+import { API_BASE_URL } from 'src/config/config';
 
 export const getEventReview = async (eventId: any) => {
   try {
-    const response = await axios.get(
-      `https://hobi-app-server.onrender.com/api/v1/reviews/filter?eventId=${eventId}`,
-    );
+    const response = await axios.get(`${API_BASE_URL}/api/v1/reviews/filter?eventId=${eventId}`);
 
     return response.data.result;
   } catch (error) {

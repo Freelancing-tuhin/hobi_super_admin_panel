@@ -68,7 +68,15 @@ const OrganizerList = () => {
                 {organizers.map((organizer: any) => (
                   <Table.Row key={organizer.id} className="bg-white">
                     <Table.Cell className="flex gap-2 items-center text-gray-700 font-semibold">
-                      <img className="h-10 w-10 rounded-full" src={organizer?.profile_pic} alt="" />
+                      <img
+                        className="h-10 w-10 rounded-full"
+                        src={
+                          organizer?.profile_pic
+                            ? organizer?.profile_pic
+                            : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyWLjkYKGswBE2f9mynFkd8oPT1W4Gx8RpDQ&s'
+                        }
+                        alt=""
+                      />
                       {organizer.full_name}
                     </Table.Cell>
                     <Table.Cell>{organizer.email}</Table.Cell>

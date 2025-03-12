@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { API_BASE_URL } from 'src/config/config';
 
-const API_BASE_URL = 'https://hobi-app-server.onrender.com/api/v1/organizer'; // Change if needed
+const API_BASE_URL1 = `${API_BASE_URL}/api/v1/organizer`; // Change if needed
 
 export const uploadOrganizerDocuments = async (
   organizerId: string,
@@ -17,7 +18,7 @@ export const uploadOrganizerDocuments = async (
     });
 
     const response = await axios.patch(
-      `${API_BASE_URL}/update_documents?organizerId=${organizerId}`,
+      `${API_BASE_URL1}/update_documents?organizerId=${organizerId}`,
       formData,
       {
         headers: {

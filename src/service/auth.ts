@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_BASE_URL } from 'src/config/config';
 
 interface LoginResponse {
   token: string;
@@ -12,7 +13,7 @@ interface LoginResponse {
 export const loginOrganizer = async (email: string, password: string): Promise<LoginResponse> => {
   try {
     const response = await axios.post<LoginResponse>(
-      'https://hobi-app-server.onrender.com/api/v1/auth/organizer-login',
+      `${API_BASE_URL}/api/v1/auth/organizer-login`,
       {
         email,
         password,
@@ -26,7 +27,7 @@ export const loginOrganizer = async (email: string, password: string): Promise<L
   }
 };
 
-const API_BASE_URL = 'https://hobi-app-server.onrender.com/api/v1/auth';
+const API_BASE_URL1 = `${API_BASE_URL}/api/v1/auth`;
 
 export interface OrganizerSignupData {
   full_name: string;
@@ -42,7 +43,7 @@ export interface OrganizerSignupData {
 
 export const organizerSignup = async (data: OrganizerSignupData) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/organizer-signup`, data);
+    const response = await axios.post(`${API_BASE_URL1}/organizer-signup`, data);
     return response.data; // Returns the API response data
   } catch (error: any) {
     throw error.response?.data || 'Signup failed'; // Throws error if signup fails
@@ -52,7 +53,7 @@ export const organizerSignup = async (data: OrganizerSignupData) => {
 export const updateOrganizerProfile = async (organizerId: string, profileData: any) => {
   try {
     const response = await axios.patch(
-      `https://hobi-app-server.onrender.com/api/v1/organizer/update_profile`,
+      `${API_BASE_URL}/api/v1/organizer/update_profile`,
       profileData,
       {
         params: { organizerId },
