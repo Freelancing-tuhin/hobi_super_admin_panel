@@ -1,0 +1,28 @@
+import { Icon } from '@iconify/react/dist/iconify.js';
+
+const SearchBox = ({ searchText, setSearchText, getOrganizer }: any) => {
+  const handleSearch = () => {
+    getOrganizer();
+  };
+
+  return (
+    <div className="flex items-center space-x-2 p-4">
+      <input
+        type="text"
+        placeholder="Search by name or email.."
+        className="border border-gray-300 rounded-md w-72 px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+      />
+      <button
+        onClick={handleSearch}
+        className="bg-blue-500 flex items-center gap-1  text-white px-4 py-2.5 rounded-md hover:bg-blue-600 transition-all"
+      >
+        <Icon icon="solar:minimalistic-magnifer-linear" height="18" />
+        Search
+      </button>
+    </div>
+  );
+};
+
+export default SearchBox;
