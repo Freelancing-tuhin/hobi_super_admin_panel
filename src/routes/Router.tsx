@@ -204,10 +204,7 @@ const ReactRowSelectionTable = Loadable(
 const ReactSortingTable = Loadable(lazy(() => import('../views/react-tables/sorting/page')));
 const ReactStickyTable = Loadable(lazy(() => import('../views/react-tables/sticky/page')));
 
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const { user }: any = useContext(AuthContext);
-  return user ? children : <Navigate to="/auth/auth2/login" replace />;
-};
+const ProtectedRoute = ({ children }: { children: JSX.Element }) => {};
 const Router = [
   {
     path: '/',
@@ -217,76 +214,46 @@ const Router = [
         path: '/',
         exact: true,
         element: (
-          <ProtectedRoute>
-            <>
-              <Dashboard1 />
-              <Dashboard2 />
-            </>
-          </ProtectedRoute>
+          <>
+            <Dashboard1 />
+            <Dashboard2 />
+          </>
         ),
       },
       {
         path: '/Event/:id',
         exact: true,
-        element: (
-          <ProtectedRoute>
-            <Dashboard3 />
-          </ProtectedRoute>
-        ),
+        element: <Dashboard3 />,
       },
       {
         path: '/Event/list',
         exact: true,
-        element: (
-          <ProtectedRoute>
-            <EcomProductList />
-          </ProtectedRoute>
-        ),
+        element: <EcomProductList />,
       },
       {
         path: '/organizers',
         exact: true,
-        element: (
-          <ProtectedRoute>
-            <OrganizerList />
-          </ProtectedRoute>
-        ),
+        element: <OrganizerList />,
       },
       {
         path: '/organizer/:id',
         exact: true,
-        element: (
-          <ProtectedRoute>
-            <ProfilePage />
-          </ProtectedRoute>
-        ),
+        element: <ProfilePage />,
       },
       {
         path: '/services',
         exact: true,
-        element: (
-          <ProtectedRoute>
-            <ServiceList />
-          </ProtectedRoute>
-        ),
+        element: <ServiceList />,
       },
       {
         path: '/reports',
         exact: true,
-        element: (
-          <ProtectedRoute>
-            <InvoiceList />
-          </ProtectedRoute>
-        ),
+        element: <InvoiceList />,
       },
       {
         path: '/apps/user-profile/profile',
         exact: true,
-        element: (
-          <ProtectedRoute>
-            <UserProfile />
-          </ProtectedRoute>
-        ),
+        element: <UserProfile />,
       },
       // Apps
       { path: '/apps/contacts', element: <Contact /> },
