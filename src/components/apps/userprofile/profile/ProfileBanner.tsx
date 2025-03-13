@@ -1,8 +1,8 @@
 import Banner from '/src/assets/images/backgrounds/profilebg.jpg';
-import { Button } from 'flowbite-react';
+// import { Button } from 'flowbite-react';
 import CardBox from 'src/components/shared/CardBox';
-import { AuthContext } from 'src/context/authContext/AuthContext';
-import { useContext } from 'react';
+// import { AuthContext } from 'src/context/authContext/AuthContext';
+// import { useContext } from 'react';
 
 const ProfileBanner = ({ user }: any) => {
   // const { user }: any = useContext(AuthContext);

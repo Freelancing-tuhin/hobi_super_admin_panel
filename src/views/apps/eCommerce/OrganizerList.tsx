@@ -15,7 +15,7 @@ const OrganizerList = () => {
 
   // const { user }: any = useContext(AuthContext);
   const [organizers, setOrganizers] = useState([]);
-  const [editedOrganizer, setEditedOrganizer] = useState<any>(null);
+  const [editedOrganizer] = useState<any>(null);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -24,10 +24,10 @@ const OrganizerList = () => {
 
   const navigate = useNavigate();
 
-  const OpenModal = (data: any) => {
-    setOpenEditModal(true);
-    setEditedOrganizer(data);
-  };
+  // const OpenModal = (data: any) => {
+  //   setOpenEditModal(true);
+  //   setEditedOrganizer(data);
+  // };
 
   const getOrganizer = async (page = 1) => {
     setLoading(true);
@@ -44,11 +44,11 @@ const OrganizerList = () => {
   };
   const handleVerificationToggle = async (organizer: any) => {
     try {
-      const response = await editOrganizer({
+      await editOrganizer({
         id: organizer?._id,
         updateData: { is_verified: !organizer?.is_verified },
       })
-        .then((response) => {
+        .then(() => {
           getOrganizer(currentPage);
         })
         .catch((error) => console.error('Update failed:', error));

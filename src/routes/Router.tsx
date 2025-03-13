@@ -7,6 +7,7 @@ import FrontendLayout from 'src/layouts/blank/FrontendLayout';
 import { AuthContext } from 'src/context/authContext/AuthContext';
 import OrganizerList from 'src/views/apps/eCommerce/OrganizerList';
 import ProfilePage from 'src/views/apps/eCommerce/ProfilePage';
+import ServiceList from 'src/components/apps/ecommerce/serviceList/ServiceList';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -257,6 +258,15 @@ const Router = [
         element: (
           <ProtectedRoute>
             <ProfilePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/services',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <ServiceList />
           </ProtectedRoute>
         ),
       },

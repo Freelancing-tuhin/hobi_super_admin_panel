@@ -26,7 +26,7 @@ const FirmDetails = ({ user }: any) => {
 
   const handleUpdate = async () => {
     try {
-      const response = await updateOrganizerProfile(user?._id, {
+      await updateOrganizerProfile(user?._id, {
         service_category: serviceCategory,
         type_of_firm: typeOfFirm,
       });

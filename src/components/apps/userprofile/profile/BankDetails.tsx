@@ -29,7 +29,7 @@ const BankDetails = ({ user }: any) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await updateOrganizerProfile(user?._id, bankDetails);
+      await updateOrganizerProfile(user?._id, bankDetails);
       // login(response?.result);
       alert('Bank details updated successfully!');
     } catch (error) {

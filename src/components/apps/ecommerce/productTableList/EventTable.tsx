@@ -1,13 +1,12 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { format } from 'date-fns';
 import { Dropdown, Table, Pagination } from 'flowbite-react';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 // import SimpleBar from 'simplebar-react';
 import { getEvent } from 'src/service/getEvents';
 import EditEventModal from './EditEventModal';
 import { deleteEvent } from 'src/service/deleteEvent';
-import { AuthContext } from 'src/context/authContext/AuthContext';
 
 const EventTable = ({ HiOutlineDotsVertical }: any) => {
   // const { user }: any = useContext(AuthContext);

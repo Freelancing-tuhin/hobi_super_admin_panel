@@ -60,7 +60,7 @@ const DocumentUploadStepper = ({ user }: any) => {
   const handleUpload = async () => {
     try {
       const organizerId = user?._id;
-      const response = await uploadOrganizerDocuments(organizerId, files);
+      await uploadOrganizerDocuments(organizerId, files);
       // login(response?.result);
       setUploadCompleted(true);
     } catch (error) {

@@ -6,13 +6,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ProductContext } from 'src/context/Ecommercecontext';
 import { ProductType } from 'src/types/apps/eCommerce';
 import CardBox from 'src/components/shared/CardBox';
-import React from 'react';
+// import React from 'react';
 import EventTable from './EventTable';
 
 const ProductTablelist = () => {
-  const { filteredAndSortedProducts, searchProducts, getProductById }: any =
-    useContext(ProductContext);
-  const [search, setSearch] = useState('');
+  const { filteredAndSortedProducts, getProductById }: any = useContext(ProductContext);
+  // const [, setSearch] = useState('');
   const [selectedProducts, setSelectedProducts] = useState<any>([]);
   const [selectAll, setSelectAll] = useState(false);
   const [, setOpenDeleteDialog] = useState(false);
@@ -21,10 +20,10 @@ const ProductTablelist = () => {
   const [, setEditedProduct] = useState<ProductType | null>(null);
   const [, setImageURL] = useState<string>('');
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.target.value);
-    searchProducts(event.target.value);
-  };
+  // const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearch(event.target.value);
+  //   searchProducts(event.target.value);
+  // };
 
   const handleEdit = (productId: number) => {
     const product = getProductById(productId);

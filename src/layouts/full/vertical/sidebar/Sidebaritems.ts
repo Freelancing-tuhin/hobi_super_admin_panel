@@ -43,12 +43,12 @@ const SidebarContent: MenuItem[] = [
         id: uniqueId(),
         url: '/organizers',
       },
-      // {
-      //   name: 'Dashboard2',
-      //   icon: 'solar:chart-line-duotone',
-      //   id: uniqueId(),
-      //   url: '/dashboards/dashboard2',
-      // },
+      {
+        name: 'Services',
+        icon: 'line-md:briefcase-twotone',
+        id: uniqueId(),
+        url: '/services',
+      },
 
       {
         name: 'Reports and Help',
