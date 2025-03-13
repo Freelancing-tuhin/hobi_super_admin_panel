@@ -11,7 +11,7 @@ import getBookingStatistics, {
   getBookingPerformance,
   getBookingUsers,
 } from 'src/service/getEventStats';
-import LockScreen from '../authentication/lockScreen/LockScreen';
+// import LockScreen from '../authentication/lockScreen/LockScreen';
 
 const Dashboard3 = () => {
   const { id } = useParams<{ id: string }>(); // Get eventId from URL

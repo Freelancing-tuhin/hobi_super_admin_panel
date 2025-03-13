@@ -5,7 +5,7 @@ import RevenueForcast from '../../components/dashboards/Dashboard1/RevenueForcas
 import WelcomeBox from '../../components/dashboards/Dashboard1/WelcomeBox';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from 'src/context/authContext/AuthContext';
-import LockScreen from '../authentication/lockScreen/LockScreen';
+// import LockScreen from '../authentication/lockScreen/LockScreen';
 
 const Dashboard1 = () => {
   const [basicData, setBasicData] = useState<any>();

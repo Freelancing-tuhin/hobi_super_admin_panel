@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from 'src/context/authContext/AuthContext';
+import { useEffect, useState } from 'react';
+// import { AuthContext } from 'src/context/authContext/AuthContext';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import { getOrganizers } from 'src/service/getOrganizers';
 import { Table, Pagination, Modal, Button } from 'flowbite-react';
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 const OrganizerList = () => {
   const BCrumb = [{ to: '/', title: 'Home' }, { title: 'Organizers list' }];
 
-  const { user }: any = useContext(AuthContext);
+  // const { user }: any = useContext(AuthContext);
   const [organizers, setOrganizers] = useState([]);
   const [editedOrganizer, setEditedOrganizer] = useState<any>(null);
   const [openEditModal, setOpenEditModal] = useState(false);

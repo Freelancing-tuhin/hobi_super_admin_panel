@@ -157,9 +157,9 @@ const HeadlessSwitch = Loadable(lazy(() => import('../views/headless-form/Headle
 const HeadlessTextarea = Loadable(lazy(() => import('../views/headless-form/HeadlessTextarea')));
 
 // authentication
-const Login = Loadable(lazy(() => import('../views/authentication/auth1/Login')));
+// const Login = Loadable(lazy(() => import('../views/authentication/auth1/Login')));
 const Login2 = Loadable(lazy(() => import('../views/authentication/auth2/Login')));
-const Register = Loadable(lazy(() => import('../views/authentication/auth1/Register')));
+// const Register = Loadable(lazy(() => import('../views/authentication/auth1/Register')));
 const Register2 = Loadable(lazy(() => import('../views/authentication/auth2/Register')));
 const ForgotPassword = Loadable(lazy(() => import('../views/authentication/auth1/ForgotPassword')));
 const ForgotPassword2 = Loadable(

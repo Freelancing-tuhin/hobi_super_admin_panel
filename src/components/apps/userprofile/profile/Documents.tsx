@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { AuthContext } from 'src/context/authContext/AuthContext';
+import { useState } from 'react';
+// import { AuthContext } from 'src/context/authContext/AuthContext';
 import { uploadOrganizerDocuments } from 'src/service/uploadDocs';
 
 const stepLabels = [

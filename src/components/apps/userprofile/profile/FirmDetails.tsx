@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardBox from 'src/components/shared/CardBox';
-import { AuthContext } from 'src/context/authContext/AuthContext';
+// import { AuthContext } from 'src/context/authContext/AuthContext';
 import { updateOrganizerProfile } from 'src/service/auth';
 import axios from 'axios';
 import { API_BASE_URL } from 'src/config/config';

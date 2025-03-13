@@ -10,7 +10,7 @@ import { useContext, useState } from 'react';
 import { createEvent, CreateEventPayload } from 'src/service/createEvent';
 import { useNavigate } from 'react-router';
 import { AuthContext } from 'src/context/authContext/AuthContext';
-import LockScreen from 'src/views/authentication/lockScreen/LockScreen';
+// import LockScreen from 'src/views/authentication/lockScreen/LockScreen';
 
 const BCrumb = [
   {

@@ -31,7 +31,7 @@ const EditEventModal = ({ open, onClose, eventData, getEvents }: any) => {
   const removeTicket = (index: number) => {
     setEditedEvent((prevEvent: any) => ({
       ...prevEvent,
-      tickets: prevEvent?.tickets?.filter((_, i) => i !== index) || [],
+      tickets: prevEvent?.tickets?.filter((_: any, i: any) => i !== index) || [],
     }));
   };
   const handleSave = async () => {

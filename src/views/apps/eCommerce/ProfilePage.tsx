@@ -15,7 +15,7 @@ const ProfilePage = () => {
 
   const [organizer, setOrganizer] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
 
   useEffect(() => {
     const fetchOrganizer = async () => {

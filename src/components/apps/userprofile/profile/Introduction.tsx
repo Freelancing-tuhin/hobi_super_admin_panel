@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import CardBox from 'src/components/shared/CardBox';
-import { AuthContext } from 'src/context/authContext/AuthContext';
+// import { AuthContext } from 'src/context/authContext/AuthContext';
 
 const Introduction = ({ user }: any) => {
   // const { user }: any = useContext(AuthContext);

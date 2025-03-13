@@ -1,7 +1,7 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import CardBox from 'src/components/shared/CardBox';
 import { updateOrganizerProfile } from 'src/service/auth';
-import { AuthContext } from 'src/context/authContext/AuthContext';
+// import { AuthContext } from 'src/context/authContext/AuthContext';
 
 interface BankDetailsType {
   PAN: string;
