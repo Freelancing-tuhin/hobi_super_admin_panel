@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { AuthContext } from 'src/context/authContext/AuthContext';
-import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
-import { getOrganizers } from 'src/service/getOrganizers';
+
 import { Table, Pagination, Modal, Button, Badge, Tooltip } from 'flowbite-react';
-import CardBox from 'src/components/shared/CardBox';
-import { editOrganizer } from 'src/service/editOrganizer';
-import { useNavigate } from 'react-router';
+
 import SearchBox from 'src/views/forms/searchBox/SearchBox';
-import DownloadCv from 'src/views/ui-components/DownloadCv';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { SPinner } from 'src/layouts/full/shared/Spinner';
 import axios from 'axios';
