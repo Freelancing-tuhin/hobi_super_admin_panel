@@ -4,7 +4,7 @@ import { lazy, useContext } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import FrontendLayout from 'src/layouts/blank/FrontendLayout';
-import { AuthContext } from 'src/context/authContext/AuthContext';
+// import { AuthContext } from 'src/context/authContext/AuthContext';
 import OrganizerList from 'src/views/apps/eCommerce/OrganizerList';
 import ProfilePage from 'src/views/apps/eCommerce/ProfilePage';
 import ServiceList from 'src/components/apps/ecommerce/serviceList/ServiceList';
@@ -204,7 +204,6 @@ const ReactRowSelectionTable = Loadable(
 const ReactSortingTable = Loadable(lazy(() => import('../views/react-tables/sorting/page')));
 const ReactStickyTable = Loadable(lazy(() => import('../views/react-tables/sticky/page')));
 
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {};
 const Router = [
   {
     path: '/',
