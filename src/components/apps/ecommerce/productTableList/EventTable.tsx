@@ -1,51 +1,33 @@
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { format } from 'date-fns';
-import { Dropdown, Table, Pagination } from 'flowbite-react';
+import { Table, Pagination, Button } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
-// import SimpleBar from 'simplebar-react';
-import { getEvent } from 'src/service/getEvents';
 import EditEventModal from './EditEventModal';
-import { deleteEvent } from 'src/service/deleteEvent';
+// import { deleteEvent } from 'src/service/deleteEvent';
 
-const EventTable = ({ HiOutlineDotsVertical }: any) => {
-  // const { user }: any = useContext(AuthContext);
-  const [events, setEvents] = useState([]);
+const EventTable = ({ events, totalPages, getEvents, searchText }: any) => {
   const [editedevents, setEditedevents] = useState();
   const [openEditModal, setOpenEditModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
 
   const OpenModal = (data: any) => {
     setOpenEditModal(true);
     setEditedevents(data);
   };
 
-  const getEvents = async (page = 1) => {
-    // setEvents([]);
-    try {
-      const response = await getEvent({
-        filter: { page: page, limit: 2 },
-      });
-      setEvents(response.result || []);
-      setTotalPages(response.totalPages);
-    } catch (error) {
-      console.error('Error fetching events:', error);
-    }
-  };
-
-  const handleDeleteEvent = async (eventId: any) => {
-    try {
-      await deleteEvent(eventId);
-      getEvents(currentPage);
-    } catch (error) {
-      console.error('Failed to delete event:', error);
-    }
-  };
+  // const handleDeleteEvent = async (eventId: any) => {
+  //   try {
+  //     await deleteEvent(eventId);
+  //     getEvents(currentPage);
+  //   } catch (error) {
+  //     console.error('Failed to delete event:', error);
+  //   }
+  // };
 
   useEffect(() => {
     getEvents(currentPage);
-  }, [currentPage]);
+  }, [currentPage, searchText]);
 
   return (
     <>
@@ -54,7 +36,6 @@ const EventTable = ({ HiOutlineDotsVertical }: any) => {
           <Table.Head>
             <Table.HeadCell>Events</Table.HeadCell>
             <Table.HeadCell>Date</Table.HeadCell>
-            <Table.HeadCell>Status</Table.HeadCell>
             <Table.HeadCell>Ratings</Table.HeadCell>
             <Table.HeadCell>Organizer</Table.HeadCell>
             <Table.HeadCell>Action</Table.HeadCell>
@@ -73,31 +54,35 @@ const EventTable = ({ HiOutlineDotsVertical }: any) => {
                   </div>
                 </Table.Cell>
                 <Table.Cell>{format(new Date(item.startDate), 'E, MMM d yyyy')}</Table.Cell>
-                <Table.Cell>{item?.verified ? 'Verified' : 'Pending'}</Table.Cell>
                 <Table.Cell>{item?.ratings || 0} / 5</Table.Cell>
                 <Table.Cell>{item?.organizerId?.full_name}</Table.Cell>
-                <Table.Cell>
-                  <Dropdown
-                    label=""
-                    dismissOnClick={false}
-                    renderTrigger={() => (
-                      <span className="h-9 w-9 flex justify-center items-center rounded-full hover:bg-lightprimary hover:text-primary cursor-pointer">
-                        <HiOutlineDotsVertical size={22} />
-                      </span>
-                    )}
+                <Table.Cell className="flex gap-2 items-center">
+                  <Link to={`/Event/${item._id}`}>
+                    <Button
+                      color="blue"
+                      size="xs"
+                      className="bg-blue-500"
+                      // onClick={() => openEditModal(service)}
+                    >
+                      <Icon icon="solar:presentation-graph-bold" height="18" />
+                    </Button>
+                  </Link>
+                  <Button
+                    color="blue"
+                    size="xs"
+                    className="bg-gray-500"
+                    onClick={() => OpenModal(item)}
                   >
-                    <Dropdown.Item>
-                      <Link to={`/Event/${item._id}`}>
-                        <Icon icon="solar:diagram-down-bold" height={18} /> View stats
-                      </Link>
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => OpenModal(item)}>
-                      <Icon icon="solar:pen-new-square-broken" height={18} /> Edit
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleDeleteEvent(item._id)}>
-                      <Icon icon="solar:trash-bin-minimalistic-outline" height={18} /> Delete
-                    </Dropdown.Item>
-                  </Dropdown>
+                    <Icon icon="material-symbols:edit-document" height="18" />
+                  </Button>
+                  {/* <Button
+                    color="blue"
+                    size="xs"
+                    className="bg-red-500"
+                    // onClick={() => deleteService(service._id)}
+                  >
+                    <Icon icon="solar:trash-bin-minimalistic-bold-duotone" height="18" />
+                  </Button> */}
                 </Table.Cell>
               </Table.Row>
             ))}

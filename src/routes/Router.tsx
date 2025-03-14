@@ -245,7 +245,7 @@ const Router = [
         element: <ServiceList />,
       },
       {
-        path: '/reports',
+        path: '/transactions',
         exact: true,
         element: <InvoiceList />,
       },

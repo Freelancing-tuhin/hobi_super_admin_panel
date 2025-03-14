@@ -53,11 +53,11 @@ const DownloadCv = ({ data }: any) => {
   };
 
   return (
-    <div className="pr-5">
+    <div className="">
       {/* Download Button */}
       <button
         onClick={downloadCSV}
-        className=" px-6 flex gap-2 items-center py-2.5 bg-green-600 text-white rounded-md hover:bg-blue-700 transition"
+        className=" px-8 flex gap-2 items-center py-2.5 bg-green-600 text-white rounded-md hover:bg-blue-700 transition"
       >
         <Icon icon="solar:file-download-bold-duotone" height="18" />
         Download

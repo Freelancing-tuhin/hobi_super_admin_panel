@@ -24,11 +24,11 @@ const SidebarLayout = () => {
                 <div className="collpase-items">
                   <div className="flex items-center space-x-4">
                     <div className="bg-blue-500 rounded-xl h-16 w-16 flex items-center justify-center text-white text-2xl font-bold">
-                      T
+                      A
                     </div>
                     <div>
-                      <p className="text-lg font-semibold">Tuhin Thakur</p>
-                      <p className="text-sm font-medium text-gray-600">(Admin)</p>
+                      <p className="text-lg font-semibold">Admin Panel</p>
+                      {/* <p className="text-sm font-medium text-gray-600">(Admin)</p> */}
                     </div>
                   </div>
                 </div>

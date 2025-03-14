@@ -38,23 +38,23 @@ const SidebarContent: MenuItem[] = [
         url: '/Event/list',
       },
       {
-        name: 'Organizers',
+        name: 'All Organizers',
         icon: 'solar:widget-add-line-duotone',
         id: uniqueId(),
         url: '/organizers',
       },
       {
         name: 'Services',
-        icon: 'line-md:briefcase-twotone',
+        icon: 'solar:buildings-linear',
         id: uniqueId(),
         url: '/services',
       },
 
       {
-        name: 'Reports and Help',
-        icon: 'solar:call-chat-line-duotone',
+        name: 'Transactions',
+        icon: 'solar:smartphone-update-outline',
         id: uniqueId(),
-        url: '/reports',
+        url: '/transactions',
       },
       // {
       //   name: 'Front Pages',
