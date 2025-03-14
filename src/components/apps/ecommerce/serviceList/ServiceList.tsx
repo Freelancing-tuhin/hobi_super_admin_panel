@@ -15,17 +15,14 @@ const ServiceList = () => {
   const [serviceName, setServiceName] = useState('');
   const [description, setDescription] = useState('');
 
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/api/v1/services/get-all`);
-        setServices(response.data.result);
-      } catch (error) {
-        console.error('Error fetching services:', error);
-      }
-    };
-    fetchServices();
-  }, []);
+  const fetchServices = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/api/v1/services/get-all`);
+      setServices(response.data.result);
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    }
+  };
 
   const createService = async () => {
     try {
@@ -47,6 +44,24 @@ const ServiceList = () => {
       console.error('Error creating service:', error);
     }
   };
+
+  const deleteService = async (id: any) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this service?');
+    if (!confirmDelete) return { success: false, message: 'Deletion canceled' };
+    try {
+      await axios.delete(`${API_BASE_URL}/api/v1/services/delete`, {
+        params: { id },
+      });
+
+      fetchServices();
+    } catch (error) {
+      console.error('Error creating service:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   return (
     <div>
@@ -77,11 +92,19 @@ const ServiceList = () => {
                       {organizer?.service_name}
                     </Table.Cell>
                     <Table.Cell>{organizer.description}</Table.Cell>
-                    <Table.Cell>0</Table.Cell>
+                    <Table.Cell>{organizer?.organizerCount}</Table.Cell>
                     <Table.Cell>{formatDateTime(organizer.updatedAt)}</Table.Cell>
-                    <Table.Cell>
-                      <Button color="blue" size="xs">
+                    <Table.Cell className="flex gap-2 items-center">
+                      <Button color="yellow" size="xs" className="bg-yellow-300">
                         <Icon icon="material-symbols:edit-document" height="18" /> Edit
+                      </Button>
+                      <Button
+                        color="blue"
+                        size="xs"
+                        className="bg-red-500"
+                        onClick={() => deleteService(organizer._id)}
+                      >
+                        <Icon icon="solar:trash-bin-minimalistic-bold-duotone" height="18" /> Delete
                       </Button>
                     </Table.Cell>
                   </Table.Row>
