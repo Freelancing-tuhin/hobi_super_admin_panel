@@ -22,7 +22,9 @@ const Profile = () => {
           <div className="flex items-center gap-1">
             <span className="h-10 w-10 hover:text-primary rounded-full flex justify-center items-center cursor-pointer group-hover/menu:bg-lightprimary group-hover/menu:text-primary">
               <img
-                src={user?.profile_pic}
+                src={
+                  'https://static.vecteezy.com/system/resources/previews/012/911/441/non_2x/default-avatar-profile-icon-in-line-style-vector.jpg'
+                }
                 alt="logo"
                 height="35"
                 width="35"
@@ -40,40 +42,21 @@ const Profile = () => {
         <div className="px-6">
           <div className="flex items-center gap-6 pb-5 border-b dark:border-darkborder mt-5 mb-3">
             <img
-              src={user?.profile_pic}
+              src={
+                'https://static.vecteezy.com/system/resources/previews/012/911/441/non_2x/default-avatar-profile-icon-in-line-style-vector.jpg'
+              }
               alt="logo"
               height="56"
               width="56"
               className="rounded-full"
             />
             <div>
-              <h5 className="text-15 font-semibold">
-                {user?.full_name} <span className="text-success">verified</span>
-              </h5>
+              <h5 className="text-15 -ml-5 font-semibold">Admin</h5>
               <p className="text-sm text-ld opacity-80">{user?.email}</p>
             </div>
           </div>
         </div>
         <SimpleBar>
-          {profileData.profileDD.map((items, index) => (
-            <div key={index} className="px-6 mb-2">
-              <Dropdown.Item
-                as={Link}
-                to={items.url}
-                className="px-3 py-2 flex justify-between items-center bg-hover group/link w-full rounded-md"
-                key={index}
-              >
-                <div className="flex items-center w-full ">
-                  <div className=" flex gap-3 w-full ">
-                    <h5 className="text-15 font-normal group-hover/link:text-primary">
-                      {items.title}
-                    </h5>
-                    {items.url == '/apps/invoice' ? <Badge color={'lightprimary'}>4</Badge> : null}
-                  </div>
-                </div>
-              </Dropdown.Item>
-            </div>
-          ))}
           <div
             onClick={handleLogout}
             className="ml-6 cursor-pointer rounded-md hover:bg-red-100 hover:text-red-500 px-3 py-2 "

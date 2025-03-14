@@ -61,7 +61,7 @@ const OrganizerList = () => {
 
   return (
     <>
-      <div className="p-6">
+      <div className="">
         <BreadcrumbComp title="Organizers list" items={BCrumb} />
         <CardBox>
           <div className="flex justify-between">
@@ -69,6 +69,7 @@ const OrganizerList = () => {
               setSearchText={setSearchText}
               searchText={searchText}
               getOrganizer={getOrganizer}
+              placeholder={'Search by name or email..'}
             />
             <DownloadCv data={organizers} />
           </div>
@@ -87,9 +88,9 @@ const OrganizerList = () => {
                   <Table.HeadCell>Actions</Table.HeadCell>
                 </Table.Head>
 
-                <Table.Body className="divide-y">
+                <Table.Body className="divide-y divide-y divide-border dark:divide-darkborder">
                   {organizers.map((organizer: any) => (
-                    <Table.Row key={organizer.id} className="bg-white">
+                    <Table.Row key={organizer.id}>
                       <Table.Cell className="flex gap-2 items-center text-gray-700 font-semibold">
                         <img
                           className="h-10 w-10 rounded-full"

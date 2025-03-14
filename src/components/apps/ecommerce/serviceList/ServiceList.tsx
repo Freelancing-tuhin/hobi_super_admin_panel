@@ -93,7 +93,7 @@ const ServiceList = () => {
 
   return (
     <div>
-      <div className="p-6">
+      <div className="">
         <BreadcrumbComp title="All Services" items={BCrumb} />
 
         <CardBox>
@@ -103,12 +103,12 @@ const ServiceList = () => {
           >
             <Icon icon="material-symbols:add-box" height="18" /> Create Service
           </Button>
-          {loading ? (
-            <div className="h-32">
-              <SPinner />
-            </div>
-          ) : (
-            <div className="overflow-x-auto border rounded-md border-ld overflow-x-auto">
+          <div className="overflow-x-auto border rounded-md border-ld overflow-x-auto">
+            {loading ? (
+              <div className="h-32">
+                <SPinner />
+              </div>
+            ) : (
               <Table hoverable>
                 <Table.Head>
                   <Table.HeadCell>Service Name</Table.HeadCell>
@@ -118,9 +118,9 @@ const ServiceList = () => {
                   <Table.HeadCell>Actions</Table.HeadCell>
                 </Table.Head>
 
-                <Table.Body className="divide-y">
+                <Table.Body className="divide-y divide-y divide-border dark:divide-darkborder">
                   {services.map((service: any) => (
-                    <Table.Row key={service._id} className="bg-white">
+                    <Table.Row key={service._id}>
                       <Table.Cell className="flex gap-2 items-center text-gray-700 font-semibold">
                         {service?.service_name}
                       </Table.Cell>
@@ -150,8 +150,8 @@ const ServiceList = () => {
                   ))}
                 </Table.Body>
               </Table>
-            </div>
-          )}
+            )}
+          </div>
         </CardBox>
       </div>
 

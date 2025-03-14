@@ -30,6 +30,7 @@ const ProductTablelist = () => {
             setSearchText={setSearchText}
             searchText={searchText}
             getOrganizer={getEvents}
+            placeholder={'Search by event name..'}
           />
         </div>
 

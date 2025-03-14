@@ -32,7 +32,7 @@ const EventTable = ({ events, totalPages, getEvents, searchText }: any) => {
   return (
     <>
       <div className="border rounded-md border-ld overflow-x-auto">
-        <Table>
+        <Table hoverable>
           <Table.Head>
             <Table.HeadCell>Events</Table.HeadCell>
             <Table.HeadCell>Date</Table.HeadCell>

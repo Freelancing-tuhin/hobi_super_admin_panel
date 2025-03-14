@@ -31,12 +31,7 @@ const SidebarContent: MenuItem[] = [
         id: uniqueId(),
         url: '/',
       },
-      {
-        name: 'All Events',
-        icon: 'solar:notebook-linear',
-        id: uniqueId(),
-        url: '/Event/list',
-      },
+
       {
         name: 'All Organizers',
         icon: 'solar:widget-add-line-duotone',
@@ -49,7 +44,12 @@ const SidebarContent: MenuItem[] = [
         id: uniqueId(),
         url: '/services',
       },
-
+      {
+        name: 'All Events',
+        icon: 'solar:notebook-linear',
+        id: uniqueId(),
+        url: '/Event/list',
+      },
       {
         name: 'Transactions',
         icon: 'solar:smartphone-update-outline',
