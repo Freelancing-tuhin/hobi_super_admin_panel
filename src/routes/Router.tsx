@@ -15,7 +15,7 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 
 /* ****Pages***** */
 const Dashboard1 = Loadable(lazy(() => import('../views/dashboard/Dashboard1')));
-const Dashboard2 = Loadable(lazy(() => import('../views/dashboard/Dashboard2')));
+// const Dashboard2 = Loadable(lazy(() => import('../views/dashboard/Dashboard2')));
 const Dashboard3 = Loadable(lazy(() => import('../views/dashboard/Dashboard3')));
 
 /* ****Apps***** */
@@ -215,7 +215,6 @@ const Router = [
         element: (
           <>
             <Dashboard1 />
-            <Dashboard2 />
           </>
         ),
       },

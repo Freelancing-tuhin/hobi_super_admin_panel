@@ -1,7 +1,8 @@
+// import AnnualProfit from 'src/components/dashboards/Dashboard2/AnnualProfit';
 import FigmaCard from 'src/components/dashboards/Dashboard2/FigmaCard';
 import NewCustomers from 'src/components/dashboards/Dashboard2/NewCustomers';
 import TotalIncome from 'src/components/dashboards/Dashboard2/TotalIncome';
-import WeeklyStats from 'src/components/dashboards/Dashboard2/WeeklyStats';
+// import WeeklyStats from 'src/components/dashboards/Dashboard2/WeeklyStats';
 
 const Dashboard2 = () => {
   return (
@@ -13,7 +14,8 @@ const Dashboard2 = () => {
         </div>
         <div className="lg:col-span-4 col-span-12">
           {/* <AnnualProfit /> */}
-          <WeeklyStats />
+          {/* <WeeklyStats /> */}
+          <FigmaCard />
         </div>
         <div className="lg:col-span-4 col-span-12">
           <FigmaCard />

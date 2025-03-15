@@ -12,13 +12,13 @@ const WelcomeBox = ({ basicData }: any) => {
               <div className="h-12 w-12 rounded-tw bg-white flex items-center justify-center flex-shrink-0 ">
                 <Icon icon="solar:course-up-outline" className="text-dark opacity-70" height={24} />
               </div>
-              <h5 className="text-xl text-white">Welcome Back Tuhin</h5>
+              <h5 className="text-xl text-white">Welcome Back</h5>
             </div>
 
             <div className="flex  w-full xl:mt-12 sm:mt-12 lg:mt-6 mt-6">
               <div className="border-e border-white/20 pe-4">
-                <p className="text-white opacity-75 text-sm mb-1">Total Events</p>
-                <h2 className="text-white text-2xl">{basicData?.totalEvents}</h2>
+                <p className="text-white opacity-75 text-sm mb-3">Total Bookings</p>
+                <h2 className="text-white text-2xl">{basicData?.totalBookings}</h2>
               </div>
               <div className="ps-4">
                 <p className="text-white opacity-75 text-sm mb-1">Total Income</p>

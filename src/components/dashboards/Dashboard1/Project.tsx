@@ -1,51 +1,83 @@
-
-import CardBox from "../../shared/CardBox";
+import CardBox from '../../shared/CardBox';
 import Chart from 'react-apexcharts';
 
-const ChartData: any = {
-  series: [
-    {
-      name: "Project",
-      data: [3, 5, 5, 7, 6, 5, 3, 5, 3],
-      labels: ["2012", "2013", "2014", "2015", "2016", "2017"],
-    },
-  ],
+const Project = ({ basicData }: any) => {
+  // Define original month labels
+  const monthLabels = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
 
-  chart: {
-    fontFamily: "inherit",
-    height: 55,
-    type: "bar",
-    offsetX: -3,
-    toolbar: {
-      show: false,
-    },
-    sparkline: {
-      enabled: true,
-    },
-  },
-  colors: ["#fff"],
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      columnWidth: "55%",
-      endingShape: "flat",
-      borderRadius: 4,
-    },
-  },
-  tooltip: {
-    theme: "dark",
-    followCursor: true,
-  },
-};
+  // Filter out zero values and keep corresponding month labels
+  const filteredData: any = [];
+  const filteredLabels: any = [];
 
-const Project = () => {
+  basicData?.eventsByMonth?.forEach((value: number, index: number) => {
+    if (value !== 0) {
+      filteredData.push(value);
+      filteredLabels.push(monthLabels[index]); // Keep the correct month name
+    }
+  });
+
+  const ChartData: any = {
+    series: [
+      {
+        name: 'Events',
+        data: filteredData,
+      },
+    ],
+    chart: {
+      fontFamily: 'inherit',
+      height: 55,
+      type: 'bar',
+      offsetX: -3,
+      toolbar: {
+        show: false,
+      },
+      sparkline: {
+        enabled: true,
+      },
+    },
+    colors: ['#fff'],
+    plotOptions: {
+      bar: {
+        horizontal: false,
+        columnWidth: '55%',
+        endingShape: 'flat',
+        borderRadius: 4,
+      },
+    },
+    tooltip: {
+      theme: 'dark',
+      followCursor: true,
+    },
+    xaxis: {
+      categories: filteredLabels, // ✅ Proper labels are set here
+      labels: {
+        style: {
+          colors: '#fff',
+        },
+      },
+    },
+  };
+
   return (
     <div>
       <CardBox className="shadow-none p-0 overflow-hidden">
         <div className="bg-lighterror p-6 ">
-          <p className="text-ld">Projects</p>
-          <div className="flex gap-3 align-self mb-4">
-            <h5 className="text-2xl">78,298</h5>
+          <p className="text-ld">Total Events</p>
+          <div className="flex gap-3 align-self mb-4 pb-2">
+            <h5 className="text-2xl">{basicData?.totalEvents}</h5>
             <span className="text-13 text-ld font-semibold pt-1">+31.8%</span>
           </div>
           <Chart
