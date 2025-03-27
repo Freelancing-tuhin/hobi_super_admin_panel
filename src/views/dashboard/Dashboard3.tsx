@@ -110,7 +110,7 @@ const Dashboard3 = () => {
   ];
   return (
     <>
-      <BreadcrumbComp title="Event Stats" items={BCrumb} />
+      <BreadcrumbComp title={stats?.eventDetails?.title} items={BCrumb} />
       <div className="grid grid-cols-12 gap-30">
         <div className="col-span-12">
           <ColorBoxes stats={stats} />

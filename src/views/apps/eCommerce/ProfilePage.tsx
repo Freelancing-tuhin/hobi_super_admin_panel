@@ -5,6 +5,7 @@ import DocumentUploadStepper from 'src/components/apps/userprofile/profile/Docum
 import FirmDetails from 'src/components/apps/userprofile/profile/FirmDetails';
 import Introduction from 'src/components/apps/userprofile/profile/Introduction';
 import ProfileBanner from 'src/components/apps/userprofile/profile/ProfileBanner';
+import ProfileEvents from 'src/components/apps/userprofile/profile/ProfileEvents/ProfileEvents';
 import CardBox from 'src/components/shared/CardBox';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import { getOrganizerById } from 'src/service/getOrganizers';
@@ -42,36 +43,36 @@ const ProfilePage = () => {
   return (
     <div>
       <BreadcrumbComp title="Organizer Details" items={BCrumb} />
-      <CardBox>
-        <div className="overflow-x-auto  rounded-md  overflow-x-auto">
-          <div className="grid grid-cols-12 gap-[30px]">
-            {/* Banner */}
-            <div className="col-span-12">
-              <ProfileBanner user={organizer} />
-            </div>
-            <div className="lg:col-span-4 col-span-12">
-              <div className="grid grid-cols-12 gap-[30px]">
-                {/* Introduction */}
-                <div className="col-span-12">
-                  <Introduction user={organizer} />
-                </div>
-                <div className="col-span-12">
-                  <DocumentUploadStepper user={organizer} />
-                </div>
-                {/* Photos */}
-              </div>
-            </div>
-            <div className="lg:col-span-8 col-span-12">
+      <div className="overflow-x-auto  rounded-md  overflow-x-auto mb-10">
+        <div className="grid grid-cols-12 gap-[30px]">
+          {/* Banner */}
+          <div className="col-span-12">
+            <ProfileBanner user={organizer} />
+          </div>
+          <div className="lg:col-span-4 col-span-12">
+            <div className="grid grid-cols-12 gap-[30px]">
+              {/* Introduction */}
               <div className="col-span-12">
-                <BankDetails user={organizer} />
+                <Introduction user={organizer} />
               </div>
-              <div className="col-span-12 mt-8">
-                <FirmDetails user={organizer} />
+              <div className="col-span-12">
+                <DocumentUploadStepper user={organizer} />
               </div>
+              {/* Photos */}
+            </div>
+          </div>
+          <div className="lg:col-span-8 col-span-12">
+            <div className="col-span-12">
+              <BankDetails user={organizer} />
+            </div>
+            <div className="col-span-12 mt-8">
+              <FirmDetails user={organizer} />
             </div>
           </div>
         </div>
-      </CardBox>
+      </div>
+
+      <ProfileEvents />
     </div>
   );
 };

@@ -56,6 +56,12 @@ const SidebarContent: MenuItem[] = [
         id: uniqueId(),
         url: '/transactions',
       },
+      {
+        name: 'Reports',
+        icon: 'solar:chat-round-call-broken',
+        id: uniqueId(),
+        url: '/reports',
+      },
       // {
       //   name: 'Front Pages',
       //   id: uniqueId(),

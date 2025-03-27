@@ -76,7 +76,7 @@ const Reviews = ({ usersList }: any) => {
               .map((user: any, index: number) => (
                 <Table.Row key={index}>
                   <Table.Cell className="whitespace-nowrap ps-0">
-                    <p className="text-sm">{user?.full_name}</p>
+                    <p className="text-sm">{user?.userId?.full_name}</p>
                   </Table.Cell>
                   <Table.Cell className="whitespace-nowrap ps-0">
                     <p className="text-sm">{formatDateTime(user?.updatedAt)}</p>

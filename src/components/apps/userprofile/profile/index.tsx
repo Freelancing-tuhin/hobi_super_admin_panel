@@ -4,12 +4,13 @@ import ProfileBanner from './ProfileBanner';
 import DocumentUploader from './Documents';
 import BankDetails from './BankDetails';
 import FirmDetails from './FirmDetails';
+import ProfileEvents from './ProfileEvents/ProfileEvents';
 
 const UserProfileApp = () => {
   return (
     <>
       <UserDataProvider>
-        <div className="grid grid-cols-12 gap-[30px]">
+        <div className="grid grid-cols-12 gap-[30px] gap-5">
           {/* Banner */}
           <div className="col-span-12">
             <ProfileBanner />
