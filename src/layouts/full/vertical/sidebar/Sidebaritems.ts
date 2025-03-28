@@ -39,6 +39,12 @@ const SidebarContent: MenuItem[] = [
         url: '/organizers',
       },
       {
+        name: 'All Users',
+        icon: 'solar:users-group-rounded-broken',
+        id: uniqueId(),
+        url: '/users',
+      },
+      {
         name: 'Services',
         icon: 'solar:buildings-linear',
         id: uniqueId(),

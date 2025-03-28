@@ -17,7 +17,7 @@ const WelcomeBox = ({ basicData }: any) => {
 
             <div className="flex  w-full xl:mt-12 sm:mt-12 lg:mt-6 mt-6">
               <div className="border-e border-white/20 pe-4">
-                <p className="text-white opacity-75 text-sm mb-3">Total Bookings</p>
+                <p className="text-white opacity-75 text-sm mb-1">Total Bookings</p>
                 <h2 className="text-white text-2xl">{basicData?.totalBookings}</h2>
               </div>
               <div className="ps-4">

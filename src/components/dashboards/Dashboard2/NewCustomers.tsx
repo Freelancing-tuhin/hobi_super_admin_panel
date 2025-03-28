@@ -29,17 +29,17 @@ const NewCustomers = ({ basicData }: any) => {
         <span className="h-12 w-12 flex-shrink-0 flex items-center justify-center bg-lightsecondary rounded-tw">
           <Icon icon="solar:football-outline" className="text-secondary" height={24} />
         </span>
-        <span className="font-medium text-base text-ld">New Customers</span>
+        <span className="font-medium text-base text-ld">Repeat Customers</span>
       </div>
 
-      <div className="flex justify-between items-center mt-8">
+      <div className="flex justify-between items-center mt-4">
+        <span className="text-ld text-15 font-medium">Repeat Customer Percentage</span>
         <span className="text-ld text-15 font-medium">
-          New Goal is {basicData?.lastMonthUniqueCustomers || 1 * 3}
+          {basicData?.repeatCustomerPercentage?.toFixed(2)}%
         </span>
-        <span className="text-ld text-15 font-medium">{percentage}%</span>
       </div>
 
-      <Progress progress={percentage} color="secondary" />
+      <Progress progress={basicData?.repeatCustomerPercentage} color="secondary" />
     </CardBox>
   );
 };

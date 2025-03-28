@@ -9,6 +9,7 @@ import OrganizerList from 'src/views/apps/eCommerce/OrganizerList';
 import ProfilePage from 'src/views/apps/eCommerce/ProfilePage';
 import ServiceList from 'src/components/apps/ecommerce/serviceList/ServiceList';
 import ReviewPage from 'src/views/apps/reviews/ReviewPage';
+import UserList from 'src/views/apps/eCommerce/UsersList';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -233,6 +234,11 @@ const Router = [
         path: '/organizers',
         exact: true,
         element: <OrganizerList />,
+      },
+      {
+        path: '/users',
+        exact: true,
+        element: <UserList />,
       },
       {
         path: '/organizer/:id',
