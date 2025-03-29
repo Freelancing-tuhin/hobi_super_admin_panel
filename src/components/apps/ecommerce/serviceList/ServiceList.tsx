@@ -7,6 +7,7 @@ import { API_BASE_URL } from 'src/config/config';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import { SPinner } from 'src/layouts/full/shared/Spinner';
 import { formatDateTime } from 'src/service/formatDate';
+import ServiceGraph from './ServiceGraph';
 
 const ServiceList = () => {
   const BCrumb = [{ to: '/', title: 'Home' }, { title: 'Services' }];
@@ -93,9 +94,10 @@ const ServiceList = () => {
 
   return (
     <div>
-      <div className="">
+      <div className="pb-72">
         <BreadcrumbComp title="All Services" items={BCrumb} />
 
+        <ServiceGraph services={services} />
         <CardBox>
           <Button
             onClick={() => setIsModalOpen(true)}
