@@ -4,7 +4,7 @@ import ProfileBanner from './ProfileBanner';
 import DocumentUploader from './Documents';
 import BankDetails from './BankDetails';
 import FirmDetails from './FirmDetails';
-import ProfileEvents from './ProfileEvents/ProfileEvents';
+// import ProfileEvents from './ProfileEvents/ProfileEvents';
 
 const UserProfileApp = () => {
   return (

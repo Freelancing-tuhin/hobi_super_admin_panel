@@ -6,7 +6,7 @@ import FirmDetails from 'src/components/apps/userprofile/profile/FirmDetails';
 import Introduction from 'src/components/apps/userprofile/profile/Introduction';
 import ProfileBanner from 'src/components/apps/userprofile/profile/ProfileBanner';
 import ProfileEvents from 'src/components/apps/userprofile/profile/ProfileEvents/ProfileEvents';
-import CardBox from 'src/components/shared/CardBox';
+// import CardBox from 'src/components/shared/CardBox';
 import BreadcrumbComp from 'src/layouts/full/shared/breadcrumb/BreadcrumbComp';
 import { getOrganizerById } from 'src/service/getOrganizers';
 

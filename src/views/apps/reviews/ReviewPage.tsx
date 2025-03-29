@@ -22,7 +22,7 @@ const ReviewPage = () => {
   const [currentReviewId, setCurrentReviewId] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState<any>(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
   const [selectedRating, setSelectedRating] = useState<number | any>(0);
 
   const ratingsNum = [1, 2, 3, 4, 5];
@@ -76,13 +76,13 @@ const ReviewPage = () => {
     }
   };
 
-  const openEditModal = (review: any) => {
-    setReviewText(review.review_text);
-    setRating(review.rating);
-    setCurrentReviewId(review._id);
-    setEditMode(true);
-    setIsModalOpen(true);
-  };
+  // const openEditModal = (review: any) => {
+  //   setReviewText(review.review_text);
+  //   setRating(review.rating);
+  //   setCurrentReviewId(review._id);
+  //   setEditMode(true);
+  //   setIsModalOpen(true);
+  // };
 
   const closeModal = () => {
     setIsModalOpen(false);

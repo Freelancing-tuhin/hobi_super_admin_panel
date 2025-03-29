@@ -6,7 +6,7 @@ import { Progress } from 'flowbite-react';
 const NewCustomers = ({ basicData }: any) => {
   // const [goalNumber, setGoalNumber] = useState(1);
   // const [currentNumber, setCurrentNumber] = useState(1);
-  const [percentage, setPercentage] = useState(0);
+  const [, setPercentage] = useState(0);
 
   useEffect(() => {
     if (
