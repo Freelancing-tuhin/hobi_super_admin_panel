@@ -56,9 +56,7 @@ const RevenueByProduct = ({ usersList }: any) => {
           <Table>
             <Table.Head className="border-b border-bordergray dark:border-darkborder">
               <Table.HeadCell className="py-2 px-3 ps-0 text-ld font-normal">Name</Table.HeadCell>
-              <Table.HeadCell className="text-ld font-normal">Age</Table.HeadCell>
               <Table.HeadCell className="text-ld font-normal">Email</Table.HeadCell>
-              <Table.HeadCell className="text-ld font-normal">Gender</Table.HeadCell>
               <Table.HeadCell className="text-ld font-normal">Address</Table.HeadCell>
               <Table.HeadCell className="text-ld font-normal">Amount Paid</Table.HeadCell>
             </Table.Head>
@@ -75,19 +73,11 @@ const RevenueByProduct = ({ usersList }: any) => {
                       <Table.Cell className="whitespace-nowrap ps-0">
                         <p className="text-sm">{user.userDetails.full_name}</p>
                       </Table.Cell>
-                      <Table.Cell className="whitespace-nowrap">
-                        <p className="text-sm">{user.userDetails.age}</p>
-                      </Table.Cell>
+
                       <Table.Cell className="whitespace-nowrap">
                         <p className="text-sm">{user.userDetails.email}</p>
                       </Table.Cell>
-                      <Table.Cell className="whitespace-nowrap">
-                        <Badge
-                          color={user.userDetails.gender === 'MALE' ? 'lightblue' : 'lightpink'}
-                        >
-                          {user.userDetails.gender}
-                        </Badge>
-                      </Table.Cell>
+
                       <Table.Cell className="whitespace-nowrap">
                         <p className="text-sm">{user.userDetails.address}</p>
                       </Table.Cell>

@@ -4,6 +4,7 @@ import EventTable from './EventTable';
 import { getEvent } from 'src/service/getEvents';
 import { useState } from 'react';
 import SearchBox from 'src/views/forms/searchBox/SearchBox';
+import CategoryGraphModal from 'src/views/apps/eCommerce/CategoryGraph';
 
 const ProductTablelist = () => {
   const [events, setEvents] = useState([]);
@@ -32,6 +33,7 @@ const ProductTablelist = () => {
             getOrganizer={getEvents}
             placeholder={'Search by event name..'}
           />
+          <CategoryGraphModal />
         </div>
 
         <EventTable
