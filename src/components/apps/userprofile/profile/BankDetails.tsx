@@ -76,7 +76,7 @@ const BankDetails = ({ user }: any) => {
                     name="PAN"
                     value={bankDetails.PAN}
                     onChange={handleChange}
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="mt-1 block w-full p-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
                 <div>
@@ -86,7 +86,7 @@ const BankDetails = ({ user }: any) => {
                     name="GST"
                     value={bankDetails.GST}
                     onChange={handleChange}
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="mt-1 block w-full p-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
                 <button
@@ -116,7 +116,7 @@ const BankDetails = ({ user }: any) => {
                     name="bank_account"
                     value={bankDetails.bank_account}
                     onChange={handleChange}
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="mt-1 block w-full p-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
                 <div>
@@ -125,7 +125,7 @@ const BankDetails = ({ user }: any) => {
                     name="bank_account_type"
                     value={bankDetails.bank_account_type}
                     onChange={handleChange}
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="mt-1 block w-full p-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   >
                     <option value="">Select Account Type</option>
                     <option value="savings">Savings Account</option>
@@ -145,7 +145,7 @@ const BankDetails = ({ user }: any) => {
                     name="IFSC_code"
                     value={bankDetails.IFSC_code}
                     onChange={handleChange}
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    className="mt-1 block w-full p-2 border text-black border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
                 <div className="flex justify-between mt-4">

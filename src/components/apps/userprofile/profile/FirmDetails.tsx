@@ -8,6 +8,7 @@ import { API_BASE_URL } from 'src/config/config';
 const FirmDetails = ({ user }: any) => {
   // const { user, login } = useContext<any>(AuthContext);
   const [serviceCategory, setServiceCategory] = useState('');
+  const [loading, setLoading] = useState(false);
   const [typeOfFirm, setTypeOfFirm] = useState(user?.type_of_firm || '');
   const [services, setServices] = useState<{ _id: string; service_name: string }[]>([]);
 
@@ -25,15 +26,19 @@ const FirmDetails = ({ user }: any) => {
   }, []);
 
   const handleUpdate = async () => {
+    setLoading(true);
     try {
       await updateOrganizerProfile(user?._id, {
         service_category: serviceCategory,
         type_of_firm: typeOfFirm,
       });
       // login(response?.result);
+      alert('Details updated successfully!');
     } catch (error) {
       console.error('Error updating details:', error);
       alert('Failed to update details.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,7 +53,7 @@ const FirmDetails = ({ user }: any) => {
         <select
           value={serviceCategory}
           onChange={(e) => setServiceCategory(e.target.value)}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full text-black p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="">Select a category</option>
           {services.map((service) => (
@@ -63,20 +68,27 @@ const FirmDetails = ({ user }: any) => {
         <select
           value={typeOfFirm}
           onChange={(e) => setTypeOfFirm(e.target.value)}
-          className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block text-black w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="">Select firm type</option>
           <option value="Sole Proprietorship">Sole Proprietorship</option>
           <option value="Partnership">Partnership</option>
           <option value="Private Limited">Private Limited</option>
+          <option value="Individual">Individual</option>
         </select>
       </div>
-      <button
-        onClick={handleUpdate}
-        className="w-2/4 bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition"
-      >
-        Update
-      </button>
+      {loading ? (
+        <button className="w-2/4 bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition">
+          Updating Details...
+        </button>
+      ) : (
+        <button
+          onClick={handleUpdate}
+          className="w-2/4 bg-blue-600 text-white py-2 mt-4 rounded-md hover:bg-blue-700 transition"
+        >
+          Update
+        </button>
+      )}
     </CardBox>
   );
 };

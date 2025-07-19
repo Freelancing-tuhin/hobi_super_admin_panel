@@ -97,14 +97,16 @@ const ServiceList = () => {
       <div className="pb-72">
         <BreadcrumbComp title="All Services" items={BCrumb} />
 
-        <ServiceGraph services={services} />
         <CardBox>
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            className="mb-4 w-44 flex-end ml-auto bg-blue-500"
-          >
-            <Icon icon="material-symbols:add-box" height="18" /> Create Service
-          </Button>
+          <div className="flex justify-end gap-5">
+            <ServiceGraph services={services} />
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              className="mb-4 w-44 flex-end ml-auto bg-blue-500"
+            >
+              <Icon icon="material-symbols:add-box" height="18" /> Create Service
+            </Button>
+          </div>
           <div className="overflow-x-auto border rounded-md border-ld overflow-x-auto">
             {loading ? (
               <div className="h-32">

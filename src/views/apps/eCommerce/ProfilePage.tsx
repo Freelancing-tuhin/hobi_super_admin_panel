@@ -17,21 +17,20 @@ const ProfilePage = () => {
   const [organizer, setOrganizer] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error] = useState(null);
+  const fetchOrganizer = async () => {
+    try {
+      setLoading(true);
+      const data = await getOrganizerById(id);
+      setOrganizer(data.result); // Assuming the API response has a 'result' field
+    } catch (err) {
+      // setError('Failed to fetch organizer details');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchOrganizer = async () => {
-      try {
-        setLoading(true);
-        const data = await getOrganizerById(id);
-        setOrganizer(data.result); // Assuming the API response has a 'result' field
-      } catch (err) {
-        // setError('Failed to fetch organizer details');
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     if (id) {
       fetchOrganizer();
     }
@@ -47,7 +46,7 @@ const ProfilePage = () => {
         <div className="grid grid-cols-12 gap-[30px]">
           {/* Banner */}
           <div className="col-span-12">
-            <ProfileBanner user={organizer} />
+            <ProfileBanner user={organizer} fetchOrganizer={fetchOrganizer} id={id} />
           </div>
           <div className="lg:col-span-4 col-span-12">
             <div className="grid grid-cols-12 gap-[30px]">

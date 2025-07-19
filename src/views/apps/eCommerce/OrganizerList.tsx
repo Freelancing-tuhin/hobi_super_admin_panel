@@ -10,6 +10,7 @@ import SearchBox from 'src/views/forms/searchBox/SearchBox';
 import DownloadCv from 'src/views/ui-components/DownloadCv';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { SPinner } from 'src/layouts/full/shared/Spinner';
+import { OrganizarModal } from 'src/components/shared/OrganizarModal';
 
 const OrganizerList = () => {
   const BCrumb = [{ to: '/', title: 'Home' }, { title: 'Organizers list' }];
@@ -71,7 +72,8 @@ const OrganizerList = () => {
               getOrganizer={getOrganizer}
               placeholder={'Search by name or email..'}
             />
-            <DownloadCv data={organizers} />
+            {/* <DownloadCv data={organizers} /> */}
+            <OrganizarModal />
           </div>
           <div className="overflow-x-auto border rounded-md border-ld overflow-x-auto">
             {loading ? (

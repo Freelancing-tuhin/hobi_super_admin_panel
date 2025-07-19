@@ -24,7 +24,6 @@ const Introduction = ({ user }: any) => {
             <p className="text-ld font-semibold">{user?.phone}</p>
           </div>
           <div className="flex gap-3 items-center">
-            <Icon icon="solar:map-point-outline" height="20" className="text-ld" />
             <p className="text-ld font-semibold">{user?.address}</p>
           </div>
         </div>
