@@ -1,8 +1,7 @@
-import { updateOrganizerProfile } from 'src/service/auth';
+// import { updateOrganizerProfile } from 'src/service/auth';
 import Banner from '/src/assets/images/backgrounds/profilebg.jpg';
 import CardBox from 'src/components/shared/CardBox';
-import { useEffect, useState } from 'react';
-import { Icon } from '@iconify/react';
+import { useEffect } from 'react';
 
 declare global {
   interface Window {
@@ -10,21 +9,19 @@ declare global {
   }
 }
 
-const ProfileBanner = ({ user, fetchOrganizer, id }: any) => {
-  const [profilePic, setProfilePic] = useState<string | null>(null);
-
-  const handleSubmit = async (img: any, user_id: any) => {
-    try {
-      await updateOrganizerProfile(id, {
-        profile_pic: img,
-      });
-      console.log('======>updated for ', id);
-      fetchOrganizer();
-    } catch (error) {
-      console.error('Error updating profile picture:', error);
-      alert('Failed to update profile picture.');
-    }
-  };
+const ProfileBanner = ({ user }: any) => {
+  // const handleSubmit = async (img: any, user_id: any) => {
+  //   try {
+  //     await updateOrganizerProfile(id, {
+  //       profile_pic: img,
+  //     });
+  //     console.log('======>updated for ', id);
+  //     fetchOrganizer();
+  //   } catch (error) {
+  //     console.error('Error updating profile picture:', error);
+  //     alert('Failed to update profile picture.');
+  //   }
+  // };
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -33,27 +30,26 @@ const ProfileBanner = ({ user, fetchOrganizer, id }: any) => {
     document.body.appendChild(script);
   }, []);
 
-  const openCloudinaryWidget = () => {
-    console.log('======>updated for ', id);
-    const widget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: 'diecfwnp9',
-        uploadPreset: 'jo9pp2yd',
-        sources: ['local', 'url', 'camera', 'facebook', 'instagram'],
-        folder: 'campus_highlights',
-        cropping: false,
-        multiple: false,
-        maxFileSize: 1500000,
-      },
-      (error: any, result: any) => {
-        if (!error && result?.event === 'success') {
-          setProfilePic(result.info.secure_url);
-          handleSubmit(result.info.secure_url, id);
-        }
-      },
-    );
-    widget.open();
-  };
+  // const openCloudinaryWidget = () => {
+  //   console.log('======>updated for ', id);
+  //   const widget = window.cloudinary.createUploadWidget(
+  //     {
+  //       cloudName: 'diecfwnp9',
+  //       uploadPreset: 'jo9pp2yd',
+  //       sources: ['local', 'url', 'camera', 'facebook', 'instagram'],
+  //       folder: 'campus_highlights',
+  //       cropping: false,
+  //       multiple: false,
+  //       maxFileSize: 1500000,
+  //     },
+  //     (error: any, result: any) => {
+  //       if (!error && result?.event === 'success') {
+  //         handleSubmit(result.info.secure_url, id);
+  //       }
+  //     },
+  //   );
+  //   widget.open();
+  // };
 
   return (
     <>

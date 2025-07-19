@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CardBox from '../../shared/CardBox';
-import { Badge, Table } from 'flowbite-react';
+import { Table } from 'flowbite-react';
 import { Icon } from '@iconify/react';
 import React from 'react';
 import SimpleBar from 'simplebar-react';

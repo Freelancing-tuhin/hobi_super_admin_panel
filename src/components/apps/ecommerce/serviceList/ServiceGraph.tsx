@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
-import { MdAutoGraph, MdOutlineAutoGraph } from 'react-icons/md';
+import { MdOutlineAutoGraph } from 'react-icons/md';
 import Chart from 'react-apexcharts';
 import CardBox from 'src/components/shared/CardBox';
 
