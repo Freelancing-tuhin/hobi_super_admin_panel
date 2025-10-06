@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import CardBox from 'src/components/shared/CardBox';
 // import { AuthContext } from 'src/context/authContext/AuthContext';
-import { updateOrganizerProfile } from 'src/service/auth';
+
 import axios from 'axios';
 import { API_BASE_URL } from 'src/config/config';
+import { editOrganizer } from 'src/service/editOrganizer';
 
 const FirmDetails = ({ user }: any) => {
   // const { user, login } = useContext<any>(AuthContext);
@@ -28,10 +29,11 @@ const FirmDetails = ({ user }: any) => {
   const handleUpdate = async () => {
     setLoading(true);
     try {
-      await updateOrganizerProfile(user?._id, {
+      const data = {
         service_category: serviceCategory,
         type_of_firm: typeOfFirm,
-      });
+      };
+      await editOrganizer({ id: user?._id, updateData: data });
       // login(response?.result);
       alert('Details updated successfully!');
     } catch (error) {

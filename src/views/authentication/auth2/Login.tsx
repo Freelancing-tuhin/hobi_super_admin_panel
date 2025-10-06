@@ -74,7 +74,7 @@ const Login = () => {
             <div className="xl:col-span-6 col-span-12 px-8 xl:border-e border-ld">
               <div className="md:py-14 py-8 lg:px-6">
                 <FullLogo />
-                <h3 className="md:text-34 text-2xl md:mb-2 md:mt-8 my-5">Admin Login</h3>
+                <h3 className="md:text-34 text-2xl md:mb-2 md:mt-8 my-5">Dashboard Login</h3>
                 {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
                 {!showOtpInput ? (

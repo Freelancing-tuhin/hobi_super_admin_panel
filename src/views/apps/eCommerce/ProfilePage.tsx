@@ -31,6 +31,7 @@ const ProfilePage = () => {
   };
 
   useEffect(() => {
+    console.log('====>', id);
     if (id) {
       fetchOrganizer();
     }

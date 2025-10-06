@@ -5,12 +5,12 @@ import { AuthContext } from 'src/context/authContext/AuthContext';
 import Loadable from 'src/layouts/full/shared/loadable/Loadable';
 import Error from 'src/views/authentication/Error';
 import ProtectedRoute from './ProtectedRoute';
+import OrganizerList from 'src/views/apps/eCommerce/OrganizerList';
 
 const ServiceList = Loadable(
   lazy(() => import('src/components/apps/ecommerce/serviceList/ServiceList')),
 );
 const InvoiceList = Loadable(lazy(() => import('src/components/apps/invoice/Invoice-list')));
-const OrganizerList = Loadable(lazy(() => import('src/components/apps/invoice/Invoice-list'))); // Same path as InvoiceList
 const FullLayout = Loadable(lazy(() => import('src/layouts/full/FullLayout')));
 const EcomProductList = Loadable(lazy(() => import('src/views/apps/eCommerce/EcomProductList')));
 const ProfilePage = Loadable(lazy(() => import('src/views/apps/eCommerce/ProfilePage')));
@@ -20,7 +20,6 @@ const UserProfile = Loadable(lazy(() => import('src/views/apps/user-profile/User
 const Dashboard1 = Loadable(lazy(() => import('src/views/dashboard/Dashboard1')));
 const Dashboard3 = Loadable(lazy(() => import('src/views/dashboard/Dashboard3')));
 const Login2 = Loadable(lazy(() => import('../views/authentication/auth2/Login')));
-
 
 const Router = [
   { path: '/auth/auth2/login', element: <Login2 /> },

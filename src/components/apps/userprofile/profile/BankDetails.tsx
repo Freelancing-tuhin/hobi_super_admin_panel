@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CardBox from 'src/components/shared/CardBox';
-import { updateOrganizerProfile } from 'src/service/auth';
+import { editOrganizer } from 'src/service/editOrganizer';
 // import { AuthContext } from 'src/context/authContext/AuthContext';
 
 interface BankDetailsType {
@@ -29,7 +29,7 @@ const BankDetails = ({ user }: any) => {
 
   const handleSubmit = async () => {
     try {
-      await updateOrganizerProfile(user?._id, bankDetails);
+      await editOrganizer({ id: user?._id, updateData: bankDetails });
       // login(response?.result);
       alert('Bank details updated successfully!');
     } catch (error) {

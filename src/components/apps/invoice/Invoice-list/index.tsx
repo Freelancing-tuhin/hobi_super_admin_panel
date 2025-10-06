@@ -8,8 +8,9 @@ import { SPinner } from 'src/layouts/full/shared/Spinner';
 import axios from 'axios';
 import { API_BASE_URL } from 'src/config/config';
 import { formatDateTime } from 'src/service/formatDate';
+import { useNavigate } from 'react-router';
 
-const OrganizerList = () => {
+const InvoiceList = () => {
   const [organizers, setOrganizers] = useState([]);
   const [editedOrganizer] = useState<any>(null);
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -21,10 +22,11 @@ const OrganizerList = () => {
     navigator.clipboard.writeText(text);
     alert('Copied to clipboard!'); // You can replace this with a tooltip
   };
+  const navigate = useNavigate();
   const getOrganizer = async (page = 1) => {
     setLoading(true);
     try {
-      const response: any = await axios.get(`${API_BASE_URL}/api/v1/transaction/get-all`, {
+      const response: any = await axios.get(`${API_BASE_URL}/api/v1/admin/getAllOrganizers`, {
         params: { page, limit: 4, amount: searchText },
       });
       setOrganizers(response?.data.result || []);
@@ -59,11 +61,11 @@ const OrganizerList = () => {
         ) : (
           <Table hoverable>
             <Table.Head>
-              <Table.HeadCell>Amount</Table.HeadCell>
-              <Table.HeadCell>Type</Table.HeadCell>
-              <Table.HeadCell>Status</Table.HeadCell>
-              <Table.HeadCell>Payment Id</Table.HeadCell>
-              <Table.HeadCell>Transaction Date</Table.HeadCell>
+              <Table.HeadCell>Name</Table.HeadCell>
+              <Table.HeadCell>Phone</Table.HeadCell>
+              <Table.HeadCell>Profile Complete</Table.HeadCell>
+              <Table.HeadCell>Address</Table.HeadCell>
+              <Table.HeadCell>Created</Table.HeadCell>
               <Table.HeadCell>Actions</Table.HeadCell>
             </Table.Head>
 
@@ -71,41 +73,41 @@ const OrganizerList = () => {
               {organizers.map((service: any) => (
                 <Table.Row key={service._id}>
                   <Table.Cell className="flex gap-2 items-center text-gray-700 font-semibold">
-                    {service?.amount}
+                    {service?.full_name}
                   </Table.Cell>
-                  <Table.Cell>{service?.type}</Table.Cell>
+                  <Table.Cell>{service?.phone}</Table.Cell>
                   <Table.Cell>
                     <Badge
                       className={`px-3 py-1 text-xs font-semibold text-white rounded-md ${
-                        service?.status === 'success'
+                        service?.profit_percentage > 75
                           ? 'bg-green-500'
-                          : service?.status === 'failed'
+                          : service?.profit_percentage > 50
                           ? 'bg-red-500'
                           : 'bg-yellow-300'
                       }`}
                     >
-                      {service?.status}
+                      {service?.profit_percentage}%
                     </Badge>
                   </Table.Cell>
 
                   <Table.Cell className="flex items-center gap-2">
-                    <span>{service?.reference}</span>
-                    <Tooltip content="Copy">
+                    <span>{service?.address}</span>
+                    {/* <Tooltip content="Copy">
                       <button
                         onClick={() => copyToClipboard(service?.reference)}
                         className="p-1 rounded-md hover:bg-gray-200 transition"
                       >
                         <Icon icon="material-symbols:content-copy-outline" height="18" />
                       </button>
-                    </Tooltip>
+                    </Tooltip> */}
                   </Table.Cell>
-                  <Table.Cell>{formatDateTime(service.updatedAt)}</Table.Cell>
+                  <Table.Cell>{formatDateTime(service.createdAt)}</Table.Cell>
                   <Table.Cell className="flex gap-2 items-center">
                     <Button
                       color="blue"
                       size="xs"
                       className="bg-gray-600"
-                      // onClick={() => openEditModal(service)}
+                      onClick={() => navigate(`/organizer/${service._id}`)}
                     >
                       <Icon icon="solar:eye-bold" height="18" /> View
                     </Button>
@@ -153,4 +155,4 @@ const OrganizerList = () => {
   );
 };
 
-export default OrganizerList;
+export default InvoiceList;
